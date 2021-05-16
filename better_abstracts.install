@@ -24,6 +24,7 @@ function better_abstracts_install() {
   $user->roles[] = 'administrator';
   $user->save();
 
+  // Othello theme is installed after modules so here we install modules that use the Othello theme.
   \Drupal::service('module_installer')->install(['mt_review_information_blocks']);
   \Drupal::service('module_installer')->install(['mt_review_abstracts_blocks']);
 	\Drupal::service('module_installer')->install(['mt_review_deadline_block']);
