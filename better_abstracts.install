@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ */
+
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function better_abstracts_install() {
+	\Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'othello')
+    ->set('admin', 'claro')
+    ->save(TRUE);
+  // Assign user 1 the "administrator" role.
+  $user = User::load(1);
+  $user->roles[] = 'administrator';
+  $user->save();
+
+  \Drupal::service('module_installer')->install(['mt_review_information_blocks']);
+  \Drupal::service('module_installer')->install(['mt_review_abstracts_blocks']);
+	\Drupal::service('module_installer')->install(['mt_review_deadline_block']);
+}

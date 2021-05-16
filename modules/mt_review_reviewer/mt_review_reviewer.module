@@ -1,0 +1,68 @@
+<?php
+
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function mt_review_reviewer_theme($existing, $type, $theme, $path) {
+  return [
+    'mailgun__mt_review_reviewer' => [
+      'variables' => [
+        'message' => [],
+      ],
+      'mail theme' => TRUE,
+    ],
+  ];
+}
+
+function mt_review_reviewer_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'mt_review_reviewer/main';
+  $user_roles = \Drupal::currentUser()->getRoles();
+  $page['#attached']['drupalSettings']['user']['roles'] = $user_roles;
+}
+
+function mt_review_reviewer_preprocess_page_title(&$variables) {
+  // Replace the username with the full name in the profile page of the user.
+  $route =  \Drupal::routeMatch()->getRouteName();
+  if ($route != 'entity.user.canonical') {
+    return;
+  }
+  //TODO: If the admin is visitinh a user page we need the user from the context instead.
+  $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  $first = $user->get('field_mt_first_name')->value;
+  $last = $user->get('field_mt_last_name')->value;
+  if (!empty(trim("{$first} {$last}"))) {
+    $variables['title'] = "{$first} {$last}";
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function mt_review_reviewer_node_presave (NodeInterface $entity) {
+  // TODO: We need to turn this into a validation process
+  //  see
+  //  - https://github.com/skounis/drupal-fivestar/issues/432 
+  //  - https://www.drupal.org/docs/drupal-apis/entity-api/entity-validation-api/providing-a-custom-validation-constraint#add_constraint_other_entity_base_field
+
+  // $abstract_id = $entity->id();
+  // $reviewer_ids = $entity->get('field_mt_abstract_reviewers')->referencedEntities();
+  // $reviewers = $entity->get('field_mt_abstract_reviewers')->getValue();
+  // foreach($reviewers as $reviewer)
+  // {
+  //   $reviewer_id = $reviewer['target_id'];
+  //   $cids = \Drupal::entityQuery('comment')
+  //   ->condition('entity_id', $abstract_id)
+  //   ->condition('uid', $reviewer_id)
+  //   ->condition('entity_type', 'node')
+  //   ->condition('comment_type','mt_conflict_statement')
+  //   ->execute();
+  //   $comments_count = count($cids);
+  //   if ($comments_count>0) {
+  //     $index = array_search($reviewer_id, array_column($reviewers,'target_id')); 
+  //     $entity->get('field_mt_abstract_reviewers')->removeItem($index);
+  //     \Drupal::messenger()->addMessage('The abstract could not be assigned to ' . $reviewer_ids[$index]->get('name')->value . ' because of a conflict declared.','warning');
+  //   }
+  // }
+}

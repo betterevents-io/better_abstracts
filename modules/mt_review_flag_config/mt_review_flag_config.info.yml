@@ -1,0 +1,13 @@
+name: 'Flag config'
+type: module
+description: 'Prepares the flag configuration.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - flag
+  - mt_review_mt_abstract
+config_devel:
+  - system.action.flag_action.mt_review_completed_flag
+  - flag.flag.mt_review_completed
+  - system.action.flag_action.mt_review_completed_unflag

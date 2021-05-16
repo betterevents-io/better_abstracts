@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mt_email_purpose
+    - node.type.mt_email_template
+  module:
+    - options
+id: node.mt_email_template.field_mt_email_purpose
+field_name: field_mt_email_purpose
+entity_type: node
+bundle: mt_email_template
+label: Purpose
+description: 'This is the email purpose. For example, if it is an email invitation with a response from the recipient or a generic email.'
+required: true
+translatable: false
+default_value:
+  -
+    value: generic
+default_value_callback: ''
+settings: {  }
+field_type: list_string

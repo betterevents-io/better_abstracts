@@ -1,0 +1,12 @@
+name: 'Vote Types'
+type: module
+description: 'Adds vote types for different criteria such as methodology and findings.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+config_devel:
+  - votingapi.vote_type.mt_findings
+  - votingapi.vote_type.mt_approach
+  - votingapi.vote_type.mt_design
+  - votingapi.vote_type.mt_methodology
+  - votingapi.vote_type.mt_originality

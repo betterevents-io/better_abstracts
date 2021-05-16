@@ -1,0 +1,90 @@
+<?php
+use Drupal\user\UserInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Session\AccountProxyInterface;
+
+use Drupal\comment\Entity\Comment;
+
+/**
+ * Implements hook_mt_review_comment_types_review_submitted()
+ *
+ */
+function mt_review_flag_mt_review_comment_types_review_submitted(AccountProxyInterface $account,
+                                                                 Comment $review_comment,
+                                                                 NodeInterface $abstract) {
+  $comment_type = $review_comment->getTypeId();
+  $flag_service = \Drupal::service('flag');
+  $award_comment_type = 'mt_aw_score';
+  if ($comment_type === $award_comment_type) {
+    $flag_name = 'mt_aw_review_completed';
+    $flag = $flag_service->getFlagById($flag_name);
+    $flag_service->flag($flag, $abstract, $account);
+    return;
+  }
+
+  // Review comment is not related to awards
+  $flag_name = 'mt_review_completed';
+  $flag = $flag_service->getFlagById($flag_name);
+  $flag_service->flag($flag, $abstract, $account);
+  // Flag Abstract as fully reviewed (reviewed by all assigned reviewers)
+  // Get cardinality of field_mt_abstract_reviewers
+  $abstract_fields = \Drupal::service('entity_field.manager')->getFieldStorageDefinitions('node', 'mt_abstract');
+  $reviewers_limit = $abstract_fields['field_mt_abstract_reviewers']->getCardinality();
+  $flagging_users = \Drupal::service('flag')->getFlaggingUsers($abstract, $flag);
+  // Check if all reviewers of the abstract have a completed review
+  if (count($flagging_users) == $reviewers_limit) {
+    $abstract_reviewers = $abstract->get('field_mt_abstract_reviewers')->referencedEntities();
+    // Check if assigned reviewers are the same with those the flag service returns
+    $diff_reviewers = array_udiff($flagging_users, $abstract_reviewers,
+      function ($obj_a, $obj_b) {
+        return $obj_a->id() <=> $obj_b->id();
+      });
+    if (count($diff_reviewers) == 0) {
+      $flag = $flag_service->getFlagById('mt_abstract_fully_reviewed');
+      $flag_service->flag($flag, $abstract);
+    }
+  }
+}
+
+/**
+ * Implements hook_mt_review_comment_types_review_deleted()
+ *
+ */
+function mt_review_flag_mt_review_comment_types_review_deleted(Comment $review_comment) {
+  $abstract_id = $review_comment->getCommentedEntityId();
+  $abstract = \Drupal\node\Entity\Node::load($abstract_id);
+  $reviewer_id = $review_comment->getOwner()->id();
+  $account = Drupal\user\Entity\User::load($reviewer_id);
+  $flag_service = \Drupal::service('flag');
+  $flag = $flag_service->getFlagById('mt_review_completed');
+  if (!empty($flag) && $flag->isFlagged($abstract, $account)) {
+    // $flag_service->unflag($flag, $abstract);
+    $flag_service->unflag($flag, $abstract, $account, $skip_permission_check = TRUE);
+    // $flag_service->unflag($flag, $abstract, $skip_permission_check = TRUE);
+  }
+}
+
+/**
+ * Implements hook_mt_review_comment_types_conflict_submitted()
+ *
+ */
+function mt_review_flag_mt_review_comment_types_conflict_submitted(AccountProxyInterface $account,
+                                                                   Comment $review_comment,
+                                                                   NodeInterface $abstract) {
+  // If abstract is marked as fully reviewed, remove the flag.
+  $flag_service = \Drupal::service('flag');
+  $flag = $flag_service->getFlagById('mt_abstract_fully_reviewed');
+  if (!empty($flag) && $flag->isFlagged($abstract)) {
+    $flag_service->unflag($flag, $abstract);
+  }
+  // Break the assignment of the conflicting reviewer
+  // TODO: Move the assignment break to another module/place (perhaps the mt_review_mt_abstract module)
+  $reviewers = $abstract->get('field_mt_abstract_reviewers');
+  $reviewer_ids =  $reviewers->getValue();
+  $index = array_search($account->id(), array_column($reviewer_ids,'target_id'));
+  if ($index === false) {
+    return;
+  }
+  $reviewers->removeItem($index);
+  $abstract->save();
+}

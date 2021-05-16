@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_aw_score
+    - field.storage.comment.field_mt_aw_prompt
+  module:
+    - markup
+id: comment.mt_aw_score.field_mt_aw_prompt
+field_name: field_mt_aw_prompt
+entity_type: comment
+bundle: mt_aw_score
+label: Prompt
+description: ''
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Please review the abstract based upon the following criteria.</p>\r\n"
+    format: full_html
+field_type: markup

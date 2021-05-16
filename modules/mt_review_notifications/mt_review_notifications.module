@@ -1,0 +1,138 @@
+<?php
+
+use Drupal\message\Entity\Message;
+use Drupal\user\Entity\User;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for comment entities.
+ */
+function mt_review_notifications_comment_insert($comment) {
+  $haystack = [
+    'mt_score_comments',
+    'mt_aw_score',
+    'mt_comments_to_author',
+    'mt_conflict_statement'
+  ];
+  $comment_type = $comment->getTypeId();
+  if (in_array($comment_type,$haystack)){
+    $entity_id = $comment->getCommentedEntityId();
+    $entity = \Drupal\node\Entity\Node::load($entity_id);
+    _mt_review_notifications_notify($comment_type, $entity);
+  }
+}
+
+function _mt_review_notifications_notify($comment_type, $abstract)
+{
+  $abstract_title = $abstract->get('title')->value;
+  $user = User::load(\Drupal::currentUser()->id());
+  $abstract_nid = $abstract->id();
+  $options = ['absolute' => TRUE];
+  $abstract_url = \Drupal\Core\Url::fromRoute('entity.node.canonical',
+    ['node' => $abstract_nid], $options)->toString();
+  $message_template = '';
+  $score_comments = ['mt_score_comments', 'mt_aw_score'];
+  if (in_array($comment_type, $score_comments)) {
+    $message_template = 'mt_score_submission_notification';
+  }
+
+  if ($comment_type === 'mt_comments_to_author') {
+    $message_template = 'mt_revision_request_notification';
+  }
+
+  if ($comment_type === 'mt_conflict_statement') {
+    $message_template = 'mt_conflict_notification';
+  }
+
+  // Get users with "mt_review_organiser" and "administrator" roles
+  $notification_recipients = _mt_review_notifications_get_users();
+
+  foreach ($notification_recipients as $key => $notification_recipient) {
+    $notification_recipient_id = $notification_recipient->id();
+    _mt_review_notifications_send_notification($message_template, $notification_recipient_id, $abstract_title, $abstract_url, $user);
+  }
+}
+
+/**
+ * Returns users with "mt_review_organiser" and "administrator" roles
+ */
+function _mt_review_notifications_get_users() {
+  $query = \Drupal::entityQuery('user');
+  $group = $query
+    ->orConditionGroup()
+    ->condition('roles', 'mt_review_organiser')
+    ->condition('roles', 'administrator');
+  $user_ids = $query
+    ->condition('status', 1)
+    ->condition($group)
+    ->execute();
+  $users = \Drupal\user\Entity\User::loadMultiple($user_ids);
+  return $users;
+}
+
+function _mt_review_notifications_send_notification($message_template, $notification_recipient_id,
+                                                    $abstract_title, $abstract_url, $user)
+{
+  $message = Message::create(['template' => $message_template, 'uid' => $notification_recipient_id]);
+  $message->setArguments([
+    '@abstract_title' => $abstract_title,
+    '@abstract_url' => $abstract_url,
+    '@user_first_name' => $user->get('field_mt_first_name')->value,
+    '@user_last_name' => $user->get('field_mt_last_name')->value,
+  ]);
+  $message->save();
+  $notifier = \Drupal::service('message_notify.sender');
+  $notifier->send($message);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function mt_review_notifications_theme($existing, $type, $theme, $path) {
+  return [
+    'mailgun__status_activated' => [
+      'variables' => [
+        'message' => [],
+      ],
+      'mail theme' => TRUE,
+    ],
+    'mailgun__status_activated_mt_awards_board_member' => [
+      'variables' => [
+        'message' => [],
+      ],
+      'mail theme' => TRUE,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function mt_review_notifications_theme_suggestions_mailgun(array $variables) {
+  // Ignore the mailgun emails(notifications) sent by the "message_notify" module.
+  if ($variables['message']['module'] === 'message_notify') {
+    return;
+  }
+  $user = $variables['message']['params']['account'];
+  $roles = $user->getRoles();
+  if (in_array('mt_awards_board_member', $roles)) {
+    $suggestions = [];
+    $suggestions[] = 'mailgun__status_activated' . '_mt_awards_board_member';
+    return $suggestions;
+  }
+}
+
+function mt_review_notifications_preprocess_mailgun__status_activated(array &$variables) {
+  $host = \Drupal::request()->getSchemeAndHttpHost();
+  $base_url = \Drupal::request()->getBaseUrl();
+  $variables['base_url'] = $host . $base_url;
+  $variables['subject'] = $variables['message']['subject'];
+  $variables['body'] = $variables['message']['body'];
+}
+
+function mt_review_notifications_preprocess_mailgun__status_activated_mt_awards_board_member(array &$variables) {
+  $host = \Drupal::request()->getSchemeAndHttpHost();
+  $base_url = \Drupal::request()->getBaseUrl();
+  $variables['base_url'] = $host . $base_url;
+  $variables['subject'] = $variables['message']['subject'];
+  $variables['body'] = $variables['message']['body'];
+}

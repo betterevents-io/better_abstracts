@@ -1,0 +1,18 @@
+diff --git a/src/Plugin/Validation/Constraint/CommentFormConstraintValidator.php b/src/Plugin/Validation/Constraint/CommentFormConstraintValidator.php
+index db44eb5..c470e83 100644
+--- a/src/Plugin/Validation/Constraint/CommentFormConstraintValidator.php
++++ b/src/Plugin/Validation/Constraint/CommentFormConstraintValidator.php
+@@ -50,13 +50,6 @@ class CommentFormConstraintValidator extends ConstraintValidator implements Cont
+     return new static($container->get('comment_limit.service'));
+   }
+ 
+-  /**
+-   * {@inheritdoc}
+-   */
+-  public function initialize(ExecutionContextInterface $context) {
+-    $this->context = $context;
+-  }
+-
+   /**
+    * {@inheritdoc}
+    */

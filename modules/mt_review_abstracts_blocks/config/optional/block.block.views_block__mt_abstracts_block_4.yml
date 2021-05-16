@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.mt_abstracts
+  module:
+    - node
+    - user
+    - views
+  theme:
+    - othello
+id: views_block__mt_abstracts_block_4
+theme: othello
+region: sidebar
+weight: -9
+provider: null
+plugin: 'views_block:mt_abstracts-block_4'
+settings:
+  id: 'views_block:mt_abstracts-block_4'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      mt_abstract: mt_abstract
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      mt_review_organiser: mt_review_organiser
+      mt_observer: mt_observer
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

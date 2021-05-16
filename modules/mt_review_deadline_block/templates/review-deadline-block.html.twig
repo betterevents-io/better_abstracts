@@ -1,0 +1,13 @@
+<div id="your-block">
+  <p>
+    <strong>{{ deadline }}</strong><br>
+    <small>{{ 'Please complete your reviews before this deadline.' | trans}}</small>
+  </p>
+  {% if not hide %}
+    <button 
+      class="button button--secondary" 
+      style="width: 100%; text-align: center; display: inline;"
+      id="mt-button-start-review"
+      type="button">{{'See all the Abstracts →' | trans}}</button>
+  {% endif %}
+</div>

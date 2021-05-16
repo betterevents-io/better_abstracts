@@ -1,0 +1,112 @@
+{#
+/**
+ * @file
+ * The default template file for e-mails.
+ *
+ * Available variables:
+ * - subject: The subject.
+ * - body: The message content.
+ * - message: The $message array created and used in the mail building
+ *   procedure. Its content varies between cases, but typically contains at
+ *   least the following elements:
+ *   - id: The message identifier.
+ *   - module: The module that handles the building of the message.
+ *   - key: The key of the message.
+ *   - to: The recipient email address.
+ *   - from: The email address of the sender.
+ *   - langcode: The langcode to use to compose the e-mail.
+ *   - params: The message parameters.
+ *
+ * This template may be overriden by module and/or mail key, using any of the
+ * following template names:
+ * - mailgun.html.twig: global, used by default.
+ * - mailgun--mymodule.html.twig: only emails sent by the module "mymodule".
+ * - mailgun--mymodule--test.html.twig: only emails by the module
+ *   "mymodule" with key "test".
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_mailgun()
+ *
+ * @ingroup themeable
+ */
+#}
+<html>
+<head>
+  <style type="text/css">
+    .mt-wrapper {
+      background: #2222;
+      padding: 15px 10%;
+    }
+    .mt-account {
+      border: 1px solid rgba(0,0,0,0.05);
+      background: rgba(0,0,0,0.03);
+      padding: 10px;
+    }
+
+    .mt-warning {
+      border: 1px solid rgba(255,0,0,0.05);
+      background: rgba(255,0,0,0.03);
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .mt-content {
+      background: #ffff;
+      padding: 15px;
+    }
+
+    .mt-banner {
+      text-align: center;
+    }
+
+    .mt-banner img {
+      display: inline;
+      max-width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="mt-wrapper">
+  <div class="mt-content">
+    <div class="mt-banner">
+      {#      <img src="https://s3.amazonaws.com/appseed.io/betterevents.io/eso2020/banner.jpg">#}
+      <img src="https://betterabstracts.com/esko2021/web/sites/default/files/logo-esko2021-v2_0.jpg">
+    </div>
+
+    <p>Θα θέλαμε να σας ενημερώσουμε ότι οι αξιολογήσεις για τη βράβευση των Abstract για το <strong>27ο Ελληνικό Συνέδριο Κλινικής Ογκολογίας</strong> έχουν ξεκινήσει.</p>
+
+    <p>Στη συνέχεια του κειμένου θα βρείτε πληροφορίες για τη σύνδεσή σας στο σύστημα αξιολόγησης και τη διαδικασία αξιολόγησης.</p>
+
+    <h1>1. Διαδικασία Αξιολόγησης</h1>
+    <div class="mt-warning">
+      <p style="text-align: center">
+        Σημαντική ειδοποίηση<br/>
+        <strong>Προθεσμία αξιολόγησης: 5 Μαΐου 2021</strong>
+      </p>
+    </div>
+
+    <p>Αφού συνδεθείτε στο σύστημα αξιολόγησης σύμφωνα με τις οδηγίες που δίνονται στο βήμα (2) θα βρείτε
+      μια λίστα με όλα τα abstract που σας έχουν ανατεθεί για αξιολόγηση. Πατήστε πάνω στο καθένα και
+      αφήστε τη βαθμολογία σας.
+    </p>
+
+    <h1>2. Ενεργοποίηση λογαριασμού</h1>
+
+    <p>Πριν χρησιμοποιήσετε την υπηρεσία αξιολόγησης των abstract θα πρέπει να ενεργοποιήσετε τον λογαριασμό σας σύμφωνα με τις οδηγίες που ακολουθούν:<p>
+
+    <div class="mt-account">
+      {{ body }}
+    </div>
+
+    <p>Αν αντιμετωπίζετε πρόβλημα σύνδεσης στο λογαριασμό σας, μπορείτε να
+      <a href="{{ base_url }}/user/password">επαναφέρετε τον κωδικό πρόσβασης</a> ή να επικοινωνήσετε
+      μαζί μας στη διεύθυνση <a href="https://support.betterevents.io/">support.betterevents.io</a>.</p>
+
+  </div>
+
+  <h4>This email is send by <a href="https://betterevents.io">betterevents</a></h4>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_mt_areas_of_interest
+    - taxonomy.vocabulary.mt_topics
+  module:
+    - user
+id: user.user.field_mt_areas_of_interest
+field_name: field_mt_areas_of_interest
+entity_type: user
+bundle: user
+label: 'Areas of interest'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      mt_topics: mt_topics
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.mt_review_completed
+  module:
+    - flag
+id: flag_action.mt_review_completed_flag
+label: 'Mark this review as completed'
+type: node
+plugin: 'flag_action:mt_review_completed_flag'
+configuration:
+  flag_id: mt_review_completed
+  flag_action: flag

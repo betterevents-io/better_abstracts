@@ -1,0 +1,94 @@
+langcode: el
+status: true
+dependencies:
+  config:
+    - comment.type.mt_aw_score
+    - field.field.comment.mt_aw_score.comment_body
+    - field.field.comment.mt_aw_score.field_mt_aw_approach
+    - field.field.comment.mt_aw_score.field_mt_aw_design
+    - field.field.comment.mt_aw_score.field_mt_aw_findings
+    - field.field.comment.mt_aw_score.field_mt_aw_methodology
+    - field.field.comment.mt_aw_score.field_mt_aw_originality
+    - field.field.comment.mt_aw_score.field_mt_aw_prompt
+  module:
+    - field_group
+    - fivestar
+    - markup
+third_party_settings:
+  field_group:
+    group_mt_aw_review:
+      children:
+        - field_mt_aw_prompt
+        - field_mt_aw_originality
+        - field_mt_aw_design
+        - field_mt_aw_methodology
+        - field_mt_aw_approach
+        - field_mt_aw_findings
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      region: content
+      format_settings:
+        id: ''
+        classes: mt-form-grid
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: mt-grid-span-2
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Review
+id: comment.mt_aw_score.default
+targetEntityType: comment
+bundle: mt_aw_score
+mode: default
+content:
+  field_mt_aw_approach:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_aw_design:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_aw_findings:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_aw_methodology:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_aw_originality:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_aw_prompt:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: markup
+    region: content
+  langcode:
+    type: language_select
+    weight: 7
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden:
+  author: true
+  comment_body: true
+  subject: true

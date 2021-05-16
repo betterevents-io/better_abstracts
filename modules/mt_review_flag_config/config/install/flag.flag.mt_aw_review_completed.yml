@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: mt_aw_review_completed
+label: 'Awards Review Completed'
+bundles:
+  - mt_abstract
+entity_type: node
+global: false
+weight: 0
+flag_short: 'Mark this review as completed'
+flag_long: 'When done mark this review as completed'
+flag_message: 'Review completed'
+unflag_short: 'Unflag this item'
+unflag_long: ''
+unflag_message: ''
+unflag_denied_text: 'Review completed'
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: false
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

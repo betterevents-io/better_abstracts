@@ -1,0 +1,32 @@
+<?php
+
+function mt_review_email_template_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+  $replacements = [];
+  if ($type == 'recipient' && !empty($data['recipient'])) {
+    $recipient = $data['recipient'];
+    $recipient_nid = $recipient->get('nid')->value;
+    $host = \Drupal::request()->getSchemeAndHttpHost();
+    $base_url = \Drupal::request()->getBaseUrl();
+    $prefix = 'field_mt_inv_rec_';
+    foreach ($tokens as $name => $original) {
+      $key = $prefix . $name;
+      switch ($name) {
+        case 'information':
+          $info_value = $recipient->get('field_mt_inv_rec_information')->value;
+          // Inserts HTML line breaks before each newline character
+          $info_value = nl2br($info_value);
+          $replacements[$original] = \Drupal\Core\Render\Markup::create($info_value);
+          break;
+        case 'accept_invitation':
+          $replacements[$original] = $host . $base_url . '/accept-invitation/' . $recipient_nid;
+          break;
+        case 'decline_invitation':
+          $replacements[$original] = $host . $base_url . '/decline-invitation/' . $recipient_nid;
+          break;
+        default:
+          $replacements[$original] = $recipient->get($key)->value;
+      }
+    }
+  }
+  return $replacements;
+}

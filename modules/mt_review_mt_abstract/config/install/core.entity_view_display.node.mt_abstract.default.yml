@@ -1,0 +1,241 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.mt_score_comments.default
+    - field.field.node.mt_abstract.body
+    - field.field.node.mt_abstract.feeds_item
+    - field.field.node.mt_abstract.field_mt_abstract_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_design
+    - field.field.node.mt_abstract.field_mt_abstract_aw_findings
+    - field.field.node.mt_abstract.field_mt_abstract_aw_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_aw_originality
+    - field.field.node.mt_abstract.field_mt_abstract_aw_review
+    - field.field.node.mt_abstract.field_mt_abstract_aw_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_aw_total_avg
+    - field.field.node.mt_abstract.field_mt_abstract_comment_author
+    - field.field.node.mt_abstract.field_mt_abstract_conflict
+    - field.field.node.mt_abstract.field_mt_abstract_design
+    - field.field.node.mt_abstract.field_mt_abstract_findings
+    - field.field.node.mt_abstract.field_mt_abstract_id
+    - field.field.node.mt_abstract.field_mt_abstract_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_originality
+    - field.field.node.mt_abstract.field_mt_abstract_pres_type
+    - field.field.node.mt_abstract.field_mt_abstract_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_score
+    - field.field.node.mt_abstract.field_mt_abstract_topic
+    - field.field.node.mt_abstract.field_mt_abstract_total_average
+    - node.type.mt_abstract
+  module:
+    - comment
+    - fivestar
+    - text
+    - user
+id: node.mt_abstract.default
+targetEntityType: node
+bundle: mt_abstract
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_mt_abstract_approach:
+    weight: 7
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_approach:
+    weight: 13
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_design:
+    weight: 11
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_findings:
+    weight: 14
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_methodology:
+    weight: 12
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_originality:
+    weight: 10
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_review:
+    weight: 19
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_aw_total_avg:
+    weight: 15
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_mt_abstract_conflict:
+    weight: 18
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_design:
+    weight: 5
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_findings:
+    weight: 8
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_id:
+    weight: 1
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_mt_abstract_methodology:
+    weight: 6
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_originality:
+    weight: 4
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_pres_type:
+    weight: 2
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_mt_abstract_score:
+    weight: 16
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_topic:
+    weight: 3
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_mt_abstract_total_average:
+    weight: 9
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  flag_mt_review_completed:
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_limit_field_abstract_conflict: true
+  field_limit_field_mt_abstract_aw_review: true
+  field_limit_field_mt_abstract_comment_author: true
+  field_limit_field_mt_abstract_conflict: true
+  field_limit_field_mt_abstract_score: true
+  field_mt_abstract_aw_reviewers: true
+  field_mt_abstract_comment_author: true
+  field_mt_abstract_reviewers: true
+  langcode: true
+  links: true
+  user_limit_field_abstract_conflict: true
+  user_limit_field_mt_abstract_aw_review: true
+  user_limit_field_mt_abstract_comment_author: true
+  user_limit_field_mt_abstract_conflict: true
+  user_limit_field_mt_abstract_score: true

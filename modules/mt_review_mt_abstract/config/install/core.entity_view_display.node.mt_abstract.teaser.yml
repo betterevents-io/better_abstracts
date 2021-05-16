@@ -1,0 +1,91 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.mt_abstract.body
+    - field.field.node.mt_abstract.feeds_item
+    - field.field.node.mt_abstract.field_mt_abstract_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_design
+    - field.field.node.mt_abstract.field_mt_abstract_aw_findings
+    - field.field.node.mt_abstract.field_mt_abstract_aw_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_aw_originality
+    - field.field.node.mt_abstract.field_mt_abstract_aw_review
+    - field.field.node.mt_abstract.field_mt_abstract_aw_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_aw_total_avg
+    - field.field.node.mt_abstract.field_mt_abstract_comment_author
+    - field.field.node.mt_abstract.field_mt_abstract_conflict
+    - field.field.node.mt_abstract.field_mt_abstract_design
+    - field.field.node.mt_abstract.field_mt_abstract_findings
+    - field.field.node.mt_abstract.field_mt_abstract_id
+    - field.field.node.mt_abstract.field_mt_abstract_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_originality
+    - field.field.node.mt_abstract.field_mt_abstract_pres_type
+    - field.field.node.mt_abstract.field_mt_abstract_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_score
+    - field.field.node.mt_abstract.field_mt_abstract_topic
+    - field.field.node.mt_abstract.field_mt_abstract_total_average
+    - node.type.mt_abstract
+  module:
+    - text
+    - user
+id: node.mt_abstract.teaser
+targetEntityType: node
+bundle: mt_abstract
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  flag_mt_review_completed:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_limit_field_abstract_conflict: true
+  field_limit_field_mt_abstract_aw_review: true
+  field_limit_field_mt_abstract_comment_author: true
+  field_limit_field_mt_abstract_conflict: true
+  field_limit_field_mt_abstract_score: true
+  field_limit_field_mt_conflict_statement: true
+  field_mt_abstract_approach: true
+  field_mt_abstract_aw_approach: true
+  field_mt_abstract_aw_design: true
+  field_mt_abstract_aw_findings: true
+  field_mt_abstract_aw_methodology: true
+  field_mt_abstract_aw_originality: true
+  field_mt_abstract_aw_review: true
+  field_mt_abstract_aw_reviewers: true
+  field_mt_abstract_aw_total_avg: true
+  field_mt_abstract_comment_author: true
+  field_mt_abstract_conflict: true
+  field_mt_abstract_design: true
+  field_mt_abstract_findings: true
+  field_mt_abstract_id: true
+  field_mt_abstract_methodology: true
+  field_mt_abstract_originality: true
+  field_mt_abstract_pres_type: true
+  field_mt_abstract_reviewers: true
+  field_mt_abstract_score: true
+  field_mt_abstract_topic: true
+  field_mt_abstract_total_average: true
+  langcode: true
+  user_limit_field_abstract_conflict: true
+  user_limit_field_mt_abstract_aw_review: true
+  user_limit_field_mt_abstract_comment_author: true
+  user_limit_field_mt_abstract_conflict: true
+  user_limit_field_mt_abstract_score: true
+  user_limit_field_mt_conflict_statement: true

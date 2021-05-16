@@ -1,0 +1,9 @@
+name: 'Reviewer Profile'
+type: module
+description: 'Improves the functionality of the Reviewers.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+config_devel:
+

@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.mt_aw_review_completed
+  module:
+    - flag
+id: flag_action.mt_aw_review_completed_unflag
+label: 'Unflag this item'
+type: node
+plugin: 'flag_action:mt_aw_review_completed_unflag'
+configuration:
+  flag_id: mt_aw_review_completed
+  flag_action: unflag

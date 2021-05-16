@@ -1,0 +1,20 @@
+langcode: el
+status: true
+dependencies:
+  config:
+    - comment.type.mt_aw_score
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.mt_aw_score.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: mt_aw_score
+label: Comments
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,41 @@
+name: 'Abstract'
+type: module
+description: 'Creates Abstract content type.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - comment
+  - path
+  - text
+  - fivestar
+  - user
+  - node
+  - menu_ui
+  - mt_review_comment_types
+  - comment_limit
+  - mt_review_taxonomy
+  - feeds
+config_devel:
+  - core.entity_view_display.node.mt_abstract.default
+  - core.base_field_override.node.mt_abstract.promote
+  - core.entity_form_display.node.mt_abstract.default
+  - core.entity_view_display.node.mt_abstract.teaser
+  - field.field.node.mt_abstract.body
+  - field.field.node.mt_abstract.field_mt_abstract_approach
+  - field.field.node.mt_abstract.field_mt_abstract_comment_author
+  - field.field.node.mt_abstract.field_mt_abstract_design
+  - field.field.node.mt_abstract.field_mt_abstract_findings
+  - field.field.node.mt_abstract.field_mt_abstract_methodology
+  - field.field.node.mt_abstract.field_mt_abstract_originality
+  - field.field.node.mt_abstract.field_mt_abstract_reviewers
+  - field.field.node.mt_abstract.field_mt_abstract_score
+  - field.storage.node.field_mt_abstract_approach
+  - field.storage.node.field_mt_abstract_comment_author
+  - field.storage.node.field_mt_abstract_design
+  - field.storage.node.field_mt_abstract_findings
+  - field.storage.node.field_mt_abstract_methodology
+  - field.storage.node.field_mt_abstract_originality
+  - field.storage.node.field_mt_abstract_reviewers
+  - field.storage.node.field_mt_abstract_score
+  - node.type.mt_abstract

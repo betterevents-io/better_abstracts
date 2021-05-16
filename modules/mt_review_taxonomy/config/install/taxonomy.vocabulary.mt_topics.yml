@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: Topics
+vid: mt_topics
+description: 'It is used for abstract topics and users'' areas of interest.'
+weight: 0

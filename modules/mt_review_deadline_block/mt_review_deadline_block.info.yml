@@ -1,0 +1,10 @@
+name: 'Deadline Block'
+type: module
+description: 'Creates a block that shows the deadline date set through the configuration form.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - block
+config_devel:
+  - block.block.mt_deadline

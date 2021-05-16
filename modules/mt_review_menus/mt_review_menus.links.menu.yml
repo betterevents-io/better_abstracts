@@ -1,0 +1,10 @@
+abstracts.abstracts:
+  title: 'Abstracts'
+  description: 'List of Abstracts'
+  parent: main
+  route_name: view.mt_abstracts.page_1
+  weight: 100
+  # The menu link is enabled by default, we can override it with:
+  enabled: 1
+  # If menu_name is omitted, the "Tools" menu will be used.
+  menu_name: main 

@@ -1,0 +1,10 @@
+diff --git a/comment_limit.info.yml b/comment_limit.info.yml
+index 73ba413..00ec7b0 100644
+--- a/comment_limit.info.yml
++++ b/comment_limit.info.yml
+@@ -2,4 +2,5 @@ name: Comment limit
+ type: module
+ description: Limit comments per field and user
+ core: 8.x
++core_version_requirement: ^8 || ^9
+ package: Comment limit

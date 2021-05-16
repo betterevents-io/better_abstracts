@@ -1,0 +1,154 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_mt_area_of_interest
+    - field.field.user.user.field_mt_first_name
+    - field.field.user.user.field_mt_last_name
+  module:
+    - feeds_tamper
+    - user
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      15c98646-4af7-4d84-8123-0c259b6b9fd4:
+        separator: ','
+        limit: null
+        plugin: explode
+        source: mt_roles
+        weight: 0
+        label: 'Assign multiple roles'
+        uuid: 15c98646-4af7-4d84-8123-0c259b6b9fd4
+      2a6407d2-b624-41e5-8f9e-9dfd48dd24dc:
+        separator: ','
+        limit: null
+        plugin: explode
+        source: mt_areas_of_interest
+        weight: 0
+        label: 'Assign multiple areas of interest'
+        uuid: 2a6407d2-b624-41e5-8f9e-9dfd48dd24dc
+      fb01fb63-105d-4e0b-ad39-8ac21a74d753:
+        default_value: el
+        only_if_empty: true
+        plugin: default_value
+        source: mt_language
+        weight: 0
+        label: 'Set value or default value'
+        uuid: fb01fb63-105d-4e0b-ad39-8ac21a74d753
+id: mt_reviewers
+label: Reviewers
+description: 'Imports users with Reviewer role'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: csv
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:user'
+processor_configuration:
+  langcode: en
+  update_existing: 2
+  update_non_existent: _keep
+  expire: -1
+  skip_hash_check: false
+  owner_id: 0
+  values: {  }
+  authorize: false
+  owner_feed_author: false
+custom_sources:
+  mt_email:
+    label: email
+    value: email
+    machine_name: mt_email
+  mt_username:
+    label: username
+    value: username
+    machine_name: mt_username
+  mt_status:
+    label: status
+    value: status
+    machine_name: mt_status
+  mt_roles:
+    label: roles
+    value: roles
+    machine_name: mt_roles
+  mt_first_name:
+    label: first_name
+    value: first_name
+    machine_name: mt_first_name
+  mt_last_name:
+    label: last_name
+    value: last_name
+    machine_name: mt_last_name
+  mt_areas_of_interest:
+    label: areas_of_interest
+    value: areas_of_interest
+    machine_name: mt_areas_of_interest
+  mt_language:
+    label: language
+    value: language
+    machine_name: mt_language
+mappings:
+  -
+    target: mail
+    map:
+      value: mt_email
+    unique:
+      value: '1'
+    settings:
+      defuse: false
+  -
+    target: name
+    map:
+      value: mt_username
+    unique: {  }
+    settings: {  }
+  -
+    target: status
+    map:
+      value: mt_status
+    settings: {  }
+  -
+    target: roles
+    map:
+      target_id: mt_roles
+    settings:
+      reference_by: id
+      allowed_roles:
+        administrator: administrator
+        mt_reviewer: mt_reviewer
+        mt_review_organiser: mt_review_organiser
+      autocreate: false
+      revoke_roles: false
+  -
+    target: field_mt_first_name
+    map:
+      value: mt_first_name
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: field_mt_last_name
+    map:
+      value: mt_last_name
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: field_mt_area_of_interest
+    map:
+      target_id: mt_areas_of_interest
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+  -
+    target: preferred_langcode
+    map:
+      value: mt_language
+    settings: {  }

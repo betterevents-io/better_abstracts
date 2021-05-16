@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_comments_to_author
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.mt_comments_to_author.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: mt_comments_to_author
+label: Comments
+description: 'Comments and suggestions for the authors'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

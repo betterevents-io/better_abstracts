@@ -1,0 +1,7 @@
+name: 'Menus'
+type: module
+description: 'Creates Abstract menus.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:

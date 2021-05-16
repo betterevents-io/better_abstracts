@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.mt_review_organiser
+  module:
+    - user
+id: user_add_role_action.mt_review_organiser
+label: 'Add the Review Organiser role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: mt_review_organiser

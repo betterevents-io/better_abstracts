@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.mt_score_submission_notification
+id: message.mt_score_submission_notification.default
+targetEntityType: message
+bundle: mt_score_submission_notification
+mode: default
+content: {  }
+hidden: {  }

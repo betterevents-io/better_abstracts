@@ -1,0 +1,11 @@
+name: 'User Views'
+type: module
+description: 'Creates views for Users.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - node
+  - user
+#  - mt_review_user
+

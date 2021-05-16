@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.mt_awards_board_member
+  module:
+    - user
+id: user_add_role_action.mt_awards_board_member
+label: 'Add the Awards Board member role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: mt_awards_board_member

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_originality
+label: Originality
+value_type: points
+description: 'What is new in the research work? What is the value of the research work and to whom?'

@@ -1,0 +1,17 @@
+name: 'Roles'
+type: module
+description: 'Sets organiser and reviewer roles.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - config_rewrite
+config_devel:
+  - system.action.user_add_role_action.mt_reviewer
+  - system.action.user_add_role_action.mt_review_organiser
+  - system.action.user_remove_role_action.mt_review_organiser
+  - system.action.user_remove_role_action.mt_reviewer
+  - user.role.mt_review_organiser
+  - user.role.mt_reviewer
+  - user.role.anonymous
+  - user.role.authenticated

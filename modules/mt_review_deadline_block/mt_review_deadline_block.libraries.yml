@@ -1,0 +1,9 @@
+fb-chat:
+  version: VERSION
+  css:
+    theme:
+      css/mt-facebook-chat.css: {}
+  js:
+    js/custom/fb.js: {}
+  dependencies:
+    - core/jquery

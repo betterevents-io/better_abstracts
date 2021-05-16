@@ -1,0 +1,25 @@
+uuid: da29df4c-ccae-48bf-951a-bc677ea3c37d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mt_abstract_aw_total_avg
+    - node.type.mt_abstract
+id: node.mt_abstract.field_mt_abstract_aw_total_avg
+field_name: field_mt_abstract_aw_total_avg
+entity_type: node
+bundle: mt_abstract
+label: 'Total Average (Awards)'
+description: 'The overall average of all the ratings/votes the abstract received from the Awards Board'
+required: false
+translatable: false
+default_value:
+  -
+    value: !!float 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: float

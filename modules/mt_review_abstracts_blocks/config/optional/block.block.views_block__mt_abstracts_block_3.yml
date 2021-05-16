@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.mt_abstracts
+  module:
+    - user
+    - views
+  theme:
+    - othello
+id: views_block__mt_abstracts_block_3
+theme: othello
+region: sidebar
+weight: -5
+provider: null
+plugin: 'views_block:mt_abstracts-block_3'
+settings:
+  id: 'views_block:mt_abstracts-block_3'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      administrator: administrator
+      mt_review_organiser: mt_review_organiser
+      mt_observer: mt_observer
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

@@ -1,0 +1,18 @@
+name: 'Email Template'
+type: module
+description: 'Creates Email Template content type.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+config_devel:
+  - field.field.node.mt_email_template.field_mt_email_banner
+  - core.entity_form_display.node.mt_email_template.default
+  - core.entity_view_display.node.mt_email_template.default
+  - core.entity_view_display.node.mt_email_template.teaser
+  - field.field.node.mt_email_template.body
+  - field.field.node.mt_email_template.field_mt_email_purpose
+  - field.field.node.mt_email_template.field_mt_email_subject
+  - field.storage.node.field_mt_email_banner
+  - field.storage.node.field_mt_email_purpose
+  - field.storage.node.field_mt_email_subject
+  - node.type.mt_email_template

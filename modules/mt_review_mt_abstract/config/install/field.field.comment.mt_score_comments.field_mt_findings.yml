@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_score_comments
+    - field.storage.comment.field_mt_findings
+  module:
+    - fivestar
+id: comment.mt_score_comments.field_mt_findings
+field_name: field_mt_findings
+entity_type: comment
+bundle: mt_score_comments
+label: Findings
+description: 'Rate the findings in the course of the work/research.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  stars: 10
+  allow_clear: false
+  allow_revote: true
+  allow_ownvote: true
+  rated_while: editing
+  enable_voting_target: true
+  target_bridge_field: entity_id
+  target_fivestar_field: field_mt_abstract_findings
+field_type: fivestar

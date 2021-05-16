@@ -1,0 +1,27 @@
+mt_review_dashboard.dashboard:
+  path: '/admin/config/dashboard'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Abstracts Review Dashboard'
+  requirements:
+    _permission: 'administer site configuration+assign abstracts to reviewers'
+mt_review_dashboard.settings_configuration_form:
+  path: '/admin/config/review-settings'
+  defaults:
+    _form: '\Drupal\mt_review_dashboard\Form\SettingsConfigurationForm'
+    _title: ' Abstracts Review Settings'
+  requirements:
+    _permission: 'administer site configuration'
+mt_review_dashboard.send_emails_form:
+  path: '/emails'
+  defaults:
+    _form: '\Drupal\mt_review_dashboard\Form\SendEmailsForm'
+    _title: 'Emails and Notifications'
+  requirements:
+    _permission: 'administer site configuration'
+mt_review_dashboard.send_reminders:
+  path: '/reviewers-incomplete'
+  defaults:
+    _title: 'Reminders to Reviewers'
+  requirements:
+    _permission: 'administer site configuration+assign abstracts to reviewers'

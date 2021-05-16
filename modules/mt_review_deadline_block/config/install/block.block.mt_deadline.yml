@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - mt_review_deadline_block
+  theme:
+    - othello
+id: mt_deadline
+theme: othello
+region: sidebar
+weight: -9
+provider: null
+plugin: mt_deadline
+settings:
+  id: mt_deadline
+  label: Deadline
+  provider: mt_review_deadline_block
+  label_display: visible
+visibility: {  }

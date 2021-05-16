@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_score_comments
+    - field.storage.comment.field_mt_originality
+  module:
+    - fivestar
+id: comment.mt_score_comments.field_mt_originality
+field_name: field_mt_originality
+entity_type: comment
+bundle: mt_score_comments
+label: Originality
+description: 'Rate what is new in the research work, what is the value of the research work and to whom.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  stars: 10
+  allow_clear: false
+  allow_revote: true
+  allow_ownvote: true
+  rated_while: editing
+  enable_voting_target: true
+  target_bridge_field: entity_id
+  target_fivestar_field: field_mt_abstract_originality
+field_type: fivestar

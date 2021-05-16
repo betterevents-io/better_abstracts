@@ -1,0 +1,4 @@
+email,username,status,roles,first_name,last_name,areas_of_interest
+sofia.atsalou@gmail.com,satsalou,0,"mt_reviewer,mt_review_organiser,administrator",Sofiaaa,Atsalou,"Bar,Foo"
+tsitsosdimi@gmail.com,dtsitsos,0,"mt_reviewer,mt_review_organiser,administrator",Dimitris,Tsitsos,"Bar,Foo"
+desfra98@gmail.com,desfra,0,"mt_reviewer,mt_review_organiser,administrator",Despoina,Fragkoulidou,"Bar,Foo"

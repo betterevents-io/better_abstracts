@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.mt_observer
+  module:
+    - user
+id: user_remove_role_action.mt_observer
+label: 'Remove the Observer role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: mt_observer

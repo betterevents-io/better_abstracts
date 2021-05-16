@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_review_organiser
+label: 'Review Organiser'
+weight: 5
+is_admin: null
+permissions:
+  - 'access administration pages'
+  - 'access comments'
+  - 'access toolbar'
+  - 'assign abstracts to reviewers'
+  - 'edit any mt_abstract content'
+  - 'execute mt_abstract_accepted_flag node'
+  - 'execute mt_abstract_accepted_unflag node'
+  - 'flag mt_abstract_accepted'
+  - 'unflag mt_abstract_accepted'
+  - 'view the administration theme'

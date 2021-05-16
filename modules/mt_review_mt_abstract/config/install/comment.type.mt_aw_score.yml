@@ -1,0 +1,7 @@
+langcode: el
+status: true
+dependencies: {  }
+id: mt_aw_score
+label: 'Awards score'
+target_entity_type_id: node
+description: 'Score given by the members of the Awards Board'
