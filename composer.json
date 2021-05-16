@@ -25,8 +25,7 @@
         "drupal/message": "^1.2",
         "drupal/message_notify": "^1.2",
         "drupal/views_bulk_operations": "^3.10",
-        "drupal/views_data_export": "^1.0",
-        "drupal/olivero": "^8.x-1.x"
+        "drupal/views_data_export": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
