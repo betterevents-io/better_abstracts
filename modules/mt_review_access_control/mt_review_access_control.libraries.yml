@@ -1,0 +1,5 @@
+mt-form-no-access:
+  version: VERSION
+  css:
+    theme:
+      css/mt-form-hide.css: {}

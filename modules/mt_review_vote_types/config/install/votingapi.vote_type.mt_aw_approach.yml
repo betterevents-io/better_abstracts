@@ -1,0 +1,7 @@
+langcode: el
+status: true
+dependencies: {  }
+id: mt_aw_approach
+label: 'Approach (Awards)'
+value_type: points
+description: 'What is the approach to the topic and what is the theoretical or subject scope of the research?'

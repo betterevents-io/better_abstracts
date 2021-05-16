@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_conflict_statement
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.mt_conflict_statement.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: mt_conflict_statement
+label: Comments
+description: 'Conflict of interest reasoning'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

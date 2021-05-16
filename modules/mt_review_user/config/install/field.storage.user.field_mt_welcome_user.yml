@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - markup
+    - user
+id: user.field_mt_welcome_user
+field_name: field_mt_welcome_user
+entity_type: user
+type: markup
+settings: {  }
+module: markup
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

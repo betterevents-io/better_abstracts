@@ -1,0 +1,51 @@
+<?php
+/**
+ * Implements hook_votingapi_results_alter()
+ *
+ * Finds all votes of the voted abstract
+ * and calculates the average each time a vote is casted.
+ * In the end, the average is saved in a dedicated field of the voted abstract.
+ */
+function mt_review_abstract_average_votingapi_results_alter(&$vote_results, $content_type, $content_id)
+{
+  if ($content_type !== 'node'){
+    return;
+  }
+
+  $votes_sum = 0;
+  $database = \Drupal::database();
+  $votes_query = $database->select('votingapi_vote', 'vv')
+    ->fields('vv')
+    ->condition('entity_type', 'node', '=')
+    ->condition('entity_id', $content_id, '=');
+
+  // Prefix of Vote Types related to Awards
+  $award_vote_types_prefix = 'mt_aw_';
+  $vote_types = array_column($vote_results, 'type');
+  $award_votes = array_filter($vote_types, function ($vote_type) use ($award_vote_types_prefix) {
+    return str_starts_with($vote_type, $award_vote_types_prefix);
+  });
+  $is_award_vote = count($award_votes) > 0;
+
+  if ($is_award_vote) {
+    $abstract_average_field = 'field_mt_abstract_aw_total_avg';
+    $votes_query = $votes_query->condition('type', "%" . $database->escapeLike($award_vote_types_prefix) . "%", 'LIKE');
+  } else {
+    $abstract_average_field = 'field_mt_abstract_total_average';
+    $votes_query = $votes_query->condition('type', "%" . $database->escapeLike($award_vote_types_prefix) . "%", 'NOT LIKE');
+  }
+  $votes = $votes_query
+            ->distinct(TRUE)
+            ->execute()->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach($votes as $vote) {
+    $votes_sum += $vote['value'];
+  }
+
+  $votes_count = count($votes);
+  $votes_average = $votes_count > 0 ? $votes_sum / $votes_count : 0;
+
+  $abstract = \Drupal\node\Entity\Node::load($content_id);
+  $abstract->set($abstract_average_field, $votes_average);
+  $abstract->save();
+}

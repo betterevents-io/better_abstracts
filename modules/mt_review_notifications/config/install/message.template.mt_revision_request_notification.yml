@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+template: mt_revision_request_notification
+label: 'Revision Request Notification'
+description: 'Notification sent on revision request'
+text:
+  -
+    value: "<p>@user_first_name @user_last_name submitted a revision request for \"@abstract_title\"</p>\r\n"
+    format: full_html
+  -
+    value: "<p>@user_first_name @user_last_name requested a revision for the abstract:</p>\r\n\r\n<p><em>@abstract_title</em></p>\r\n\r\n<p>To view all the abstract details and the comments to the author visit:</p>\r\n\r\n<ul>\r\n\t<li><a href=\"@abstract_url\">@abstract_url</a>.</li>\r\n</ul>\r\n"
+    format: full_html
+settings:
+  'token options':
+    clear: false
+    'token replace': true
+  purge_override: false
+  purge_methods: {  }

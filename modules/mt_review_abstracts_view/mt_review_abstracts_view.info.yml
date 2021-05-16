@@ -1,0 +1,21 @@
+name: 'Abstracts View'
+type: module
+description: 'Creates a view with Abstracts.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - flag
+  - views_bulk_operations
+  - mt_review_flag_config
+  - mt_review_roles
+  - mt_review_user
+  - mt_review_mt_abstract
+  - mt_review_vbo
+  - votingapi
+  - csv_serialization
+  - rest
+  - serialization
+  - views_data_export
+config_devel:
+  - views.view.mt_abstracts

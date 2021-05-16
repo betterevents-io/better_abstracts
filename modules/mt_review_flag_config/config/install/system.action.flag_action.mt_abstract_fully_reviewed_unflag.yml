@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.mt_abstract_fully_reviewed
+  module:
+    - flag
+id: flag_action.mt_abstract_fully_reviewed_unflag
+label: 'Unflag abstract as fully reviewed '
+type: node
+plugin: 'flag_action:mt_abstract_fully_reviewed_unflag'
+configuration:
+  flag_id: mt_abstract_fully_reviewed
+  flag_action: unflag

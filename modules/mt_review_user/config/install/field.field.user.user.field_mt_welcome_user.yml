@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_mt_welcome_user
+  module:
+    - markup
+    - user
+id: user.user.field_mt_welcome_user
+field_name: field_mt_welcome_user
+entity_type: user
+bundle: user
+label: Welcome
+description: 'Start reviewing'
+required: false
+translatable: false
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Welcome to the <em>Abstracts Review</em> system of the&nbsp;<strong>Annual Meeting of Cardiologists</strong>.</p>\r\n\r\n<p><button class=\"button button--primary\" id=\"mt-button-start-review\">Start reviewing →</button></p>\r\n"
+    format: full_html
+field_type: markup

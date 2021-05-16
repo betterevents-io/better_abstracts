@@ -1,0 +1,65 @@
+<?php
+
+use Drupal\comment\Entity\Comment;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for comment entities.
+ */
+function mt_review_comment_types_comment_insert(Comment $comment) {
+  $comment_type = $comment->getTypeId();
+  $entity_id = $comment->getCommentedEntityId();
+  $entity = \Drupal\node\Entity\Node::load($entity_id);
+  $account = \Drupal::currentUser();
+
+
+  $haystack = ['mt_score_comments', 'mt_aw_score'];
+  if (in_array($comment_type, $haystack)) {
+    $module_handler = \Drupal::moduleHandler();
+    $module_handler
+      ->invokeAll('mt_review_comment_types_review_submitted', [
+        $account,
+        $comment,
+        $entity,
+      ]);
+  }
+  if ($comment_type === 'mt_conflict_statement') {
+    $module_handler = \Drupal::moduleHandler();
+    $module_handler
+      ->invokeAll('mt_review_comment_types_conflict_submitted', [
+        $account,
+        $comment,
+        $entity,
+      ]);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete() for comment entities.
+ */
+function mt_review_comment_types_comment_delete(Comment $comment) {
+  $comment_type = $comment->getTypeId();
+  if ($comment_type === 'mt_score_comments') {
+    $module_handler = \Drupal::moduleHandler();
+    $module_handler
+      ->invokeAll('mt_review_comment_types_review_deleted', [
+        $comment, 
+      ]);
+    }
+  }
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Redirect the user after conflict submission to profile page
+ */
+function mt_review_comment_types_form_comment_form_alter(&$form, &$form_state, $form_id) {
+  if($form_id=='comment_mt_conflict_statement_form'){
+    $form['actions']['submit']['#submit'][] = 'mt_review_comment_types_comment_mt_conflict_statement_submit';
+  }
+}
+
+function mt_review_comment_types_comment_mt_conflict_statement_submit($form, &$form_state) {
+  $url = Url::fromUri('internal:/user/' . \Drupal::currentUser()->id() . '/abstracts');
+  $form_state->setRedirectUrl($url);
+}

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_comments_to_author
+    - field.field.comment.mt_comments_to_author.comment_body
+    - field.field.comment.mt_comments_to_author.field_mt_prompt
+  module:
+    - text
+id: comment.mt_comments_to_author.default
+targetEntityType: comment
+bundle: mt_comments_to_author
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_mt_prompt: true

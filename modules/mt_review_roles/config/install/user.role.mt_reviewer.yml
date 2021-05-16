@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_reviewer
+label: Reviewer
+weight: 4
+is_admin: null
+permissions:
+  - 'access comments'
+  - 'edit own comments'
+  - 'flag mt_review_completed'
+  - 'post comments'
+  - 'rate content'

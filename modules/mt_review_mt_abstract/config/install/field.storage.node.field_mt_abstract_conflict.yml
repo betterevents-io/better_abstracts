@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.field_mt_abstract_conflict
+field_name: field_mt_abstract_conflict
+entity_type: node
+type: comment
+settings:
+  comment_type: mt_conflict_statement
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.mt_email_template
+  module:
+    - text
+id: node.mt_email_template.body
+field_name: body
+entity_type: node
+bundle: mt_email_template
+label: Body
+description: 'Appears as the email body'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

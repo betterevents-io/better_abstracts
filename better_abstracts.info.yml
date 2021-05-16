@@ -1,0 +1,104 @@
+name: Better Abstracts
+type: profile
+description: 'Better Abstracts for Abstracts Review.'
+core_version_requirement: '^8.8 || ^9'
+
+distribution:
+  name: Better Abstracts
+  langcode: en
+
+dependencies:
+  - actions_permissions
+  - automated_cron
+  - big_pipe
+  - block
+  - block_content
+  - breakpoint
+  - ckeditor
+  - color
+  - comment
+  - comment_limit
+  - config
+  - config_devel
+  - config_rewrite
+  - config_translation
+  - contact
+  - contextual
+  - csv_serialization
+  - datetime
+  - dblog
+  - default_content
+  - default_content_deploy
+  - dynamic_page_cache
+  - editor
+  - feeds
+  - feeds_tamper
+  - field
+  - field_group
+  - field_ui
+  - file
+  - filter
+  - fivestar
+  - flag
+  - hal
+  - help
+  - history
+  - image
+  - language
+  - link
+  - locale
+  - mailgun
+  - mailsystem
+  - markup
+  - menu_link_content
+  - menu_ui
+  - message
+  - message_notify
+  - node
+  - options
+  - page_cache
+  - path
+  - path_alias
+  - quickedit
+  - rdf
+  - rest
+  - search
+  - serialization
+  - shortcut
+  - system
+  - tamper
+  - taxonomy
+  - text
+  - toolbar
+  - tour
+  - update
+  - user
+  - views_bulk_operations
+  - views_data_export
+  - views_ui
+  - votingapi
+  - views
+  - mt_review_abstract_average
+  - mt_review_abstracts_view
+  - mt_review_access_control
+  - mt_review_comment_types
+  - mt_review_dashboard
+  - mt_review_email_template
+  - mt_review_mt_abstract
+  - mt_review_user
+  - mt_review_users_view
+  - mt_review_flag_config
+  - mt_review_flag
+  - mt_review_information_view
+  - mt_review_menus
+  - mt_review_notifications
+  - mt_review_reviewer
+  - mt_review_roles
+  - mt_review_taxonomy
+  - mt_review_vbo
+  - mt_review_vote_types
+
+themes:
+  - olivero
+  - claro
+  - othello

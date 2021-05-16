@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_conflict_statement
+label: 'Conflict statement'
+target_entity_type_id: node
+description: 'Conflict of interest statement'

@@ -1,0 +1,33 @@
+name: 'Comment types'
+type: module
+description: 'Creates comment types such as reviewer score and comments to the author.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - field_group
+  - markup
+  - fivestar
+  - mt_review_mt_abstract
+config_devel:
+  - core.entity_form_display.comment.mt_comments_to_author.default
+  - comment.type.mt_comments_to_author
+  - comment.type.mt_score_comments
+  - core.entity_form_display.comment.mt_score_comments.default
+  - core.entity_view_display.comment.mt_comments_to_author.default
+  - core.entity_view_display.comment.mt_score_comments.default
+  - field.field.comment.mt_comments_to_author.comment_body
+  - field.field.comment.mt_comments_to_author.field_mt_prompt
+  - field.field.comment.mt_score_comments.comment_body
+  - field.field.comment.mt_score_comments.field_mt_approach
+  - field.field.comment.mt_score_comments.field_mt_design
+  - field.field.comment.mt_score_comments.field_mt_findings
+  - field.field.comment.mt_score_comments.field_mt_methodology
+  - field.field.comment.mt_score_comments.field_mt_originality
+  - field.field.comment.mt_score_comments.field_mt_prompt
+  - field.storage.comment.field_mt_approach
+  - field.storage.comment.field_mt_design
+  - field.storage.comment.field_mt_findings
+  - field.storage.comment.field_mt_methodology
+  - field.storage.comment.field_mt_originality
+  - field.storage.comment.field_mt_prompt

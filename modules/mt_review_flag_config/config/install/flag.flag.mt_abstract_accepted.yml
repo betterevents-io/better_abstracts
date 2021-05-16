@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: mt_abstract_accepted
+label: 'Abstract Accepted'
+bundles:
+  - mt_abstract
+entity_type: node
+global: true
+weight: 0
+flag_short: 'Mark as accepted'
+flag_long: ''
+flag_message: 'Abstract added to accepted'
+unflag_short: 'Remove from accepted'
+unflag_long: ''
+unflag_message: 'Abstract removed from accepted'
+unflag_denied_text: ''
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: false
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: '0'
+linkTypeConfig: {  }

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_comments_to_author
+label: 'Comments to author'
+target_entity_type_id: node
+description: 'Reviewer''s comments to author'

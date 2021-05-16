@@ -1,0 +1,6 @@
+name: 'Views Bulk Operations for Abstracts'
+type: module
+description: 'Creates bulk operations for the Abstracts Review.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'

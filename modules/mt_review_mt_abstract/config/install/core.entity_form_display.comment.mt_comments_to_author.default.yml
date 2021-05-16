@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_comments_to_author
+    - field.field.comment.mt_comments_to_author.comment_body
+    - field.field.comment.mt_comments_to_author.field_mt_prompt
+  module:
+    - field_group
+    - markup
+    - text
+third_party_settings:
+  field_group:
+    group_mt_message_the_author:
+      children:
+        - field_mt_prompt
+        - comment_body
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: mt-grid-span-2
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: mt-form-grid
+      label: 'Request a revision'
+id: comment.mt_comments_to_author.default
+targetEntityType: comment
+bundle: mt_comments_to_author
+mode: default
+content:
+  comment_body:
+    type: text_textarea
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_mt_prompt:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: markup
+    region: content
+hidden:
+  author: true
+  subject: true

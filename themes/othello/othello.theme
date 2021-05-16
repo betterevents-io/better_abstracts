@@ -1,0 +1,63 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Utility\Html;
+/**
+ * @file
+ * Functions to support theming in the Othello theme.
+ */
+
+function othello_preprocess_html(&$variables) {
+  // The getRoles() method will return us the machine names, so there is no
+  // need to process roles names additionally. However, I suggest prefixing
+  // the names with "role-", so it's more obvious.
+  // foreach ($variables['user']->getRoles() as $role) {
+  //   $variables['attributes']['class'][] = 'role-' . $role;
+  // }
+}
+
+// TODO: Move this in the mt_review_comment_types module
+function othello_form_comment_mt_comments_to_author_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'comment_mt_comments_to_author_form' && isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Send comment');
+  }
+}
+
+// TODO: Move this in the mt_review_comment_types module
+function othello_form_comment_mt_score_comments_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'comment_mt_score_comments_form' && isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Submit review');
+  }
+}
+
+// TODO: Move this in the mt_review_comment_types module
+function othello_form_comment_mt_aw_score_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'comment_mt_aw_score_form' && isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Submit review');
+  }
+}
+
+// TODO: Move this in the mt_review_comment_types module
+function othello_form_comment_mt_conflict_statement_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'comment_mt_conflict_statement_form' && isset($form['actions']['submit'])) {
+    $form['actions']['submit']['#value'] = t('Declare conflict');
+  }
+}
+
+/**
+ * Implements template_preprocess_preprocess_block().
+ *
+ * For preprocessing default mode of document media type.
+ */
+function othello_preprocess_block(&$variables) {
+  $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['derivative_plugin_id']);
+}
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Add paragraph formatting to body.
+ */
+function othello_preprocess_field(&$variables, $hook): void {
+  $variables['attributes']['class'][] = Html::cleanCssIdentifier($variables['field_name']);
+}

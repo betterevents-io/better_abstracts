@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_conflict_statement
+    - field.field.comment.mt_conflict_statement.comment_body
+    - field.field.comment.mt_conflict_statement.field_mt_prompt
+  module:
+    - field_group
+    - markup
+    - text
+third_party_settings:
+  field_group:
+    group_mt_conflict_statement:
+      children:
+        - field_mt_prompt
+        - comment_body
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      region: content
+      format_settings:
+        id: ''
+        classes: mt-form-grid
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: mt-grid-span-2
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+      label: 'Conflict statement'
+id: comment.mt_conflict_statement.default
+targetEntityType: comment
+bundle: mt_conflict_statement
+mode: default
+content:
+  comment_body:
+    type: text_textarea
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  field_mt_prompt:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: markup
+    region: content
+hidden:
+  author: true
+  subject: true

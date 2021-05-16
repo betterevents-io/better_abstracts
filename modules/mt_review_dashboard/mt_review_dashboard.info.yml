@@ -1,0 +1,6 @@
+name: 'Dashboard'
+type: module
+description: 'Creates a dashboard for configuring general information and sending emails.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'

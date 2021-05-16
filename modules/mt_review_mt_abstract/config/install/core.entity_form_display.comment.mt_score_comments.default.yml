@@ -1,0 +1,87 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_score_comments
+    - field.field.comment.mt_score_comments.comment_body
+    - field.field.comment.mt_score_comments.field_mt_approach
+    - field.field.comment.mt_score_comments.field_mt_design
+    - field.field.comment.mt_score_comments.field_mt_findings
+    - field.field.comment.mt_score_comments.field_mt_methodology
+    - field.field.comment.mt_score_comments.field_mt_originality
+    - field.field.comment.mt_score_comments.field_mt_prompt
+  module:
+    - field_group
+    - fivestar
+    - markup
+third_party_settings:
+  field_group:
+    group_mt_score:
+      children:
+        - field_mt_prompt
+        - field_mt_originality
+        - field_mt_design
+        - field_mt_methodology
+        - field_mt_approach
+        - field_mt_findings
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      region: content
+      format_settings:
+        element: div
+        show_label: true
+        label_element: h2
+        label_element_classes: mt-grid-span-2
+        required_fields: true
+        attributes: ''
+        effect: none
+        speed: fast
+        id: ''
+        classes: mt-form-grid
+      label: Review
+id: comment.mt_score_comments.default
+targetEntityType: comment
+bundle: mt_score_comments
+mode: default
+content:
+  field_mt_approach:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_design:
+    weight: 9
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_findings:
+    weight: 12
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_methodology:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_originality:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_select
+    region: content
+  field_mt_prompt:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: markup
+    region: content
+hidden:
+  author: true
+  comment_body: true
+  subject: true

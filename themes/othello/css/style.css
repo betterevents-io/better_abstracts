@@ -1,0 +1,210 @@
+/*delete the "start reviewing" for observer user*/
+.role-mt_observer .field-mt-welcome-user #mt-button-start-review{
+  display: none;
+}
+/*In case that observer is also a reviewer*/
+.role-mt_observer.role-mt_reviewer .field-mt-welcome-user #mt-button-start-review {
+    display: block;
+}
+
+/*delete the "start reviewing" for review organiser*/
+.role-mt_review_organiser .field-mt-welcome-user #mt-button-start-review{
+  display: none;
+}
+/*In case that review organiser is also a reviewer*/
+.role-mt_review_organiser.role-mt_reviewer .field-mt-welcome-user #mt-button-start-review {
+  display: block;
+}
+
+/*delete the "start reviewing" for administrator user*/
+.role-administrator .field-mt-welcome-user #mt-button-start-review{
+  display: none;
+}
+/*In case that administrator is also a reviewer*/
+.role-administrator.role-mt_reviewer .field-mt-welcome-user #mt-button-start-review {
+  display: block;
+}
+
+.site-branding__slogan {
+  font-size: 1rem;
+}
+
+.node__content.layout--content-narrow,
+article.comment .comment__text-content .comment__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.node__content.layout--content-narrow>*,
+article.comment .comment__text-content .comment__content>* {
+  grid-column: span 3;
+}
+
+.node__content.layout--content-narrow .field--type-fivestar,
+article.comment .comment__text-content .comment__content .field--type-fivestar {
+  grid-column: span 1;
+}
+
+
+/* Section Comments */
+
+.mt-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1em;
+}
+
+.mt-form-grid .field--name-comment-body,
+.mt-form-grid .form-actions,
+.mt-form-grid .mt-grid-span-2,
+.mt-form-grid .field--type-markup {
+  grid-column: span 2;
+}
+
+.mt-form-grid>h2 {
+  margin-bottom: 0;
+}
+
+.comment-mt-score-comments-form .field--type-language {
+  display: none;
+}
+
+
+/* Hide text format options and hint from reviewers */
+
+.role-mt_reviewer .field--widget-text-textarea .filter-wrapper {
+  display: none;
+}
+
+
+/* set bg for the comment forms */
+
+.comment-mt-score-comments-form,
+.comment-form {
+  background: #eaeaea;
+  padding: 0 20px;
+  margin-bottom: 36px;
+}
+
+
+/* style for area of interest Reviewers View */
+
+.area-of-interest {
+  font-family: "metropolis", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+}
+
+
+/* limit the hight of the body */
+
+.field--name-body {
+  max-height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mt-body-reveal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0;
+  /* "transparent" only works here because == rgba(0,0,0,0) */
+  background-image: linear-gradient(to bottom, transparent, rgb(255, 255, 255));
+}
+
+
+/* TODO:remove. Hide the image from the body (temporary) */
+
+article.node--type-article .field--name-field-image {
+  display: none;
+}
+
+
+/* Hide meta. TODO: we could disable them in the content tyep  */
+
+article.node--type-article .node__meta {
+  display: none;
+}
+
+
+/* Exposed filters */
+
+.views-exposed-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  border: 1px solid #dedfe4;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.views-exposed-form .form-item {
+  margin: 0.75rem 0.5rem 0 0;
+}
+
+.views-exposed-form .form-actions {
+  flex-basis: 100%;
+}
+
+
+/* Caption for tables (when groupped) */
+
+.views-table {
+  width: 100%;
+}
+
+.views-table caption {
+  font-size: 1.5em;
+}
+
+.view-mt-abstracts .views-table .views-field-flagged {
+  width: 105px;
+}
+
+
+/* Hide VBO panels*/
+
+
+/* TODO: Remove */
+
+details.vbo-multipage-selector {
+  display: none;
+}
+
+#vbo-action-form-wrapper .form-type-boolean {
+  display: none;
+}
+
+
+/* Reduce vertical gaps for tables in the side bar*/
+
+.region.region--sidebar .views-table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.region.region--sidebar>* {
+  margin-bottom: 0;
+}
+
+.role-mt_reviewer .comment-mt-conflict-statement-form.mt-comments-limited {
+  display: none;
+}
+
+.field-mt-abstract-comment-author .comment__content h3 {
+  display: none;
+}
+
+
+/* Reduce page title font size */
+
+h1.page-title {
+  font-size: 2.5rem;
+  line-height: 3rem;
+}

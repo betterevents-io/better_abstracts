@@ -1,0 +1,63 @@
+langcode: el
+status: true
+dependencies:
+  config:
+    - comment.type.mt_aw_score
+    - field.field.comment.mt_aw_score.comment_body
+    - field.field.comment.mt_aw_score.field_mt_aw_approach
+    - field.field.comment.mt_aw_score.field_mt_aw_design
+    - field.field.comment.mt_aw_score.field_mt_aw_findings
+    - field.field.comment.mt_aw_score.field_mt_aw_methodology
+    - field.field.comment.mt_aw_score.field_mt_aw_originality
+    - field.field.comment.mt_aw_score.field_mt_aw_prompt
+  module:
+    - fivestar
+id: comment.mt_aw_score.default
+targetEntityType: comment
+bundle: mt_aw_score
+mode: default
+content:
+  field_mt_aw_approach:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_rating
+    region: content
+  field_mt_aw_design:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_rating
+    region: content
+  field_mt_aw_findings:
+    weight: 4
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_rating
+    region: content
+  field_mt_aw_methodology:
+    weight: 2
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_rating
+    region: content
+  field_mt_aw_originality:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: fivestar_rating
+    region: content
+  links:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  comment_body: true
+  field_mt_aw_prompt: true
+  langcode: true

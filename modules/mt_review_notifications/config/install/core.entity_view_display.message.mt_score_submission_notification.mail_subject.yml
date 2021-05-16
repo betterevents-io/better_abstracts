@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - message.template.mt_score_submission_notification
+id: message.mt_score_submission_notification.mail_subject
+targetEntityType: message
+bundle: mt_score_submission_notification
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  partial_1: true

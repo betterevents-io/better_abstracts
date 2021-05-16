@@ -1,0 +1,23 @@
+uuid: 91f970df-5910-4c48-9c9d-eb8afd5ce049
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - othello
+_core:
+  default_config_hash: kF9mVmsseaqxC_a3r0oTNT2MOdiEdr9-6lMUfIa18eI
+id: othello_search_form_wide
+theme: othello
+region: secondary_menu
+weight: -5
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form (wide)'
+  provider: search
+  label_display: '0'
+  page_id: ''
+visibility: {  }

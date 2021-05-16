@@ -1,0 +1,102 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.mt_abstract.body
+    - field.field.node.mt_abstract.field_mt_abstract_id
+    - field.field.node.mt_abstract.field_mt_abstract_pres_type
+    - field.field.node.mt_abstract.field_mt_abstract_topic
+    - node.type.mt_abstract
+  module:
+    - node
+id: mt_abstracts
+label: Abstracts
+description: 'Imports nodes of type Abstract'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: csv
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  langcode: en
+  update_existing: 2
+  update_non_existent: _keep
+  expire: -1
+  owner_feed_author: true
+  owner_id: 0
+  authorize: true
+  skip_hash_check: false
+  values:
+    type: mt_abstract
+custom_sources:
+  mt_serial:
+    label: serial
+    value: serial
+    machine_name: mt_serial
+  mt_be_abstract_title:
+    label: be_abstract_title
+    value: be_abstract_title
+    machine_name: mt_be_abstract_title
+  mt_be_abstract_body:
+    label: be_abstract_body
+    value: be_abstract_body
+    machine_name: mt_be_abstract_body
+  '':
+    label: ''
+    value: ''
+    machine_name: ''
+  mt_be_topic:
+    label: be_topic
+    value: be_topic
+    machine_name: mt_be_topic
+  mt_be_type_of_presentation:
+    label: be_type_of_presentation
+    value: be_type_of_presentation
+    machine_name: mt_be_type_of_presentation
+mappings:
+  -
+    target: field_mt_abstract_id
+    map:
+      value: mt_serial
+    unique:
+      value: '1'
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: mt_be_abstract_title
+    unique: {  }
+    settings:
+      language: null
+  -
+    target: body
+    map:
+      value: mt_be_abstract_body
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_mt_abstract_topic
+    map:
+      target_id: mt_be_topic
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_mt_abstract_pres_type
+    map:
+      target_id: mt_be_type_of_presentation
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'

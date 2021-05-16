@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.message.mail_subject
+    - message.template.mt_conflict_notification
+id: message.mt_conflict_notification.mail_subject
+targetEntityType: message
+bundle: mt_conflict_notification
+mode: mail_subject
+content:
+  partial_0:
+    weight: 0
+    region: content
+hidden:
+  partial_1: true

@@ -1,0 +1,17 @@
+<?php
+
+function mt_review_deadline_block_theme() {
+  return [
+    'review_deadline_block' => [
+      // Here you can pass any variables you want, if necessary.
+      'variables' => ['deadline' => NULL, 'current_path' => NULL, 'hide' => NULL],
+    ],
+    'review_support_block' => [
+      'variables' => ['fb_page_id' => NULL, 'current_path' => NULL],
+    ],
+  ];
+}
+
+function mt_review_deadline_block_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] =  'mt_review_deadline_block/fb-chat';
+}

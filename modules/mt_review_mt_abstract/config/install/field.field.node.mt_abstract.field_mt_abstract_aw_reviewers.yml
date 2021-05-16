@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mt_abstract_aw_reviewers
+    - node.type.mt_abstract
+id: node.mt_abstract.field_mt_abstract_aw_reviewers
+field_name: field_mt_abstract_aw_reviewers
+entity_type: node
+bundle: mt_abstract
+label: 'Award reviewers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        mt_awards_board_member: mt_awards_board_member
+        administrator: '0'
+        mt_reviewer: '0'
+        mt_review_organiser: '0'
+        mt_observer: '0'
+    target_bundles: null
+    sort:
+      field: field_mt_last_name
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_awards_board_member
+label: 'Awards Board member'
+weight: 8
+is_admin: null
+permissions:
+  - 'edit own comments'
+  - 'flag mt_aw_review_completed'
+  - 'post comments'

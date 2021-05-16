@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mt_abstract_pres_type
+    - node.type.mt_abstract
+    - taxonomy.vocabulary.mt_presentation_types
+id: node.mt_abstract.field_mt_abstract_pres_type
+field_name: field_mt_abstract_pres_type
+entity_type: node
+bundle: mt_abstract
+label: 'Presentation type'
+description: 'E.g. Oral or Poster'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      mt_presentation_types: mt_presentation_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

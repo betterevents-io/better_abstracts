@@ -1,0 +1,22 @@
+uuid: d9cfe558-498f-4c20-8023-b254dc389b9d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - othello
+_core:
+  default_config_hash: KfyaTPRJEcAyy2e5AxEfWQnuHcn4WrfvcWek7lSmHZQ
+id: othello_messages
+theme: othello
+region: highlighted
+weight: -5
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

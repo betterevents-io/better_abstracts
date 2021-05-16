@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * The default template file for e-mails.
+ *
+ * Available variables:
+ * - subject: The subject.
+ * - body: The message content.
+ * - message: The $message array created and used in the mail building
+ *   procedure. Its content varies between cases, but typically contains at
+ *   least the following elements:
+ *   - id: The message identifier.
+ *   - module: The module that handles the building of the message.
+ *   - key: The key of the message.
+ *   - to: The recipient email address.
+ *   - from: The email address of the sender.
+ *   - langcode: The langcode to use to compose the e-mail.
+ *   - params: The message parameters.
+ *
+ * This template may be overriden by module and/or mail key, using any of the
+ * following template names:
+ * - mailgun.html.twig: global, used by default.
+ * - mailgun--mymodule.html.twig: only emails sent by the module "mymodule".
+ * - mailgun--mymodule--test.html.twig: only emails by the module
+ *   "mymodule" with key "test".
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_mailgun()
+ *
+ * @ingroup themeable
+ */
+#}
+<html>
+  <body>
+    <div class="mt-wrapper" style="background: #2222; padding: 15px 10%;">
+      <div class="mt-content" style="background: #ffff; padding: 15px;">
+        <div class="mt-invitation-banner" style="text-align: center;">
+          {% if banner.entity.uri.value %}
+            <img style="display: inline; max-width: 100%;" src="{{ file_url(banner.entity.uri.value) }}" alt="{{ banner.alt }}" />
+          {% endif %}
+          {% if not banner.entity.uri.value and banner %}
+            <img style="display: inline; max-width: 100%;" src="{{ banner }}" alt="banner" />
+          {% endif %}
+        </div>
+        <div class="mt-invitation-body">
+          {{ body_text | raw }}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.mt_conflict_notification
+id: message.mt_conflict_notification.default
+targetEntityType: message
+bundle: mt_conflict_notification
+mode: default
+content:
+  partial_0:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  partial_1:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Presentation Types'
+vid: mt_presentation_types
+description: 'Use to group Abstracts based on presentation type'
+weight: 0

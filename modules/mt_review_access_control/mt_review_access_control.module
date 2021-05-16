@@ -1,0 +1,274 @@
+<?php
+
+/**
+ * @file
+ * Contains mt_review_access_control.module.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\flag\FlagInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_help().
+ */
+function mt_review_access_control_help($route_name, RouteMatchInterface $route_match)
+{
+  switch ($route_name) {
+    // Main module help for the mt_react_demo module.
+    case 'help.page.mt_review_access_control':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Contols the access to fields entities.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+function mt_review_access_control_entity_field_access($operation, \Drupal\Core\Field\FieldDefinitionInterface $field_definition, \Drupal\Core\Session\AccountInterface $account, \Drupal\Core\Field\FieldItemListInterface $items = NULL)
+{
+  $score_fields = [
+    'field_mt_abstract_approach',
+    'field_mt_abstract_design',
+    'field_mt_abstract_findings',
+    'field_mt_abstract_methodology',
+    'field_mt_abstract_originality',
+    'field_mt_abstract_total_average',
+    'field_mt_abstract_aw_approach',
+    'field_mt_abstract_aw_design',
+    'field_mt_abstract_aw_findings',
+    'field_mt_abstract_aw_methodology',
+    'field_mt_abstract_aw_originality',
+    'field_mt_abstract_aw_total_avg',
+  ];
+  // Get the current user
+  /* @var \Drupal\Core\Session\AccountProxy */
+  $account = \Drupal::currentUser();
+  // Log in messages.
+  // dpm('field_access:: ' . $field_definition->getName() . ' - operation: ' . $operation . ' - role: ' . $account->getRoles()[0]);
+
+  $haystack = ['mt_review_organiser', 'mt_observer','administrator'];
+  // If Admin or Observer or Review Organiser, do nothing
+  if(array_intersect($haystack, $account->getRoles())){
+    return AccessResult::neutral();
+  }
+
+  // Hide score fields from Reviewer but show them to Administrator, Review Organiser and Observer
+  $reviewer_roles = ['mt_reviewer', 'mt_awards_board_member'];
+  $isReviewer = array_intersect($reviewer_roles, $account->getRoles());
+  if ($isReviewer && in_array($field_definition->getName(), $score_fields) && $operation == 'view') {
+    return AccessResult::forbidden();
+  }
+
+  // Hide flag fields from everyone but admins.
+  if ($field_definition->getName() == 'comment_body') {
+    // return AccessResult::forbidden();
+  }
+
+  /* Example code
+   if (
+     $field_definition
+       ->getName() == 'field_of_interest' && $operation == 'edit'
+   ) {
+     return AccessResult::allowedIfHasPermission($account, 'update field of interest');
+   }
+  */
+  return AccessResult::neutral();
+}
+
+function mt_review_access_control_flag_action_access($action, FlagInterface $flag, AccountInterface $account, EntityInterface $flaggable = NULL) {
+  $admin_role = 'administrator';
+  $haystack = ['mt_review_completed'];
+  // Get the current user
+  /* @var \Drupal\Core\Session\AccountProxy */
+  $account = \Drupal::currentUser();
+  $isAdmin = in_array($admin_role, $account->getRoles());
+  if ($isAdmin) {
+    return AccessResult::neutral();
+  }
+  // Prevent access to the flag actions.
+  if (in_array($flag->getOriginalId(), $haystack)) {
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
+}
+
+function mt_review_access_control_entity_access(\Drupal\Core\Entity\EntityInterface $entity, $operation, \Drupal\Core\Session\AccountInterface $account)
+{
+  $account = \Drupal::currentUser();
+  // Log in messages. Uncomment to see all the available entities.
+  // dpm('entity_access:: ' . $entity->label() . ' - operation: ' . $operation);
+  // No opinion.
+  return AccessResult::neutral();
+}
+
+function mt_review_access_control_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id)
+{
+  $user = \Drupal::currentUser();
+
+  // Prevent editing the area of interest but for admins
+  $haystack = ['mt_review_organiser', 'administrator'];
+  if($form_id == 'user_form'){
+    if( !array_intersect($haystack, $user->getRoles())){
+      $form['field_mt_area_of_interest']['#disabled'] = true;
+    }
+  }
+
+  // Run the checks for the Comment forms only when the node is an Abstract.
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!($node instanceof \Drupal\node\NodeInterface && $node->getType() === 'mt_abstract')) {
+    return;
+  }
+
+  $isAdmin = in_array('administrator', $user->getRoles());
+  if ($isAdmin) {
+    return AccessResult::neutral();
+  }
+
+  /* Example code
+   * Prevent access to the comments form.
+   if ($form_id === 'comment_comment_form') {
+     $form['#access'] = FALSE;
+   }
+  */
+
+  // Prevent access to the awards-related forms.
+  $award_forms = ['comment_mt_aw_score_form'];
+  // Prevent access to the review-related forms.
+  $review_forms = ['comment_mt_score_comments_form', 'comment_mt_comments_to_author_form','comment_mt_conflict_statement_form'];
+
+  $isReviewer = in_array('mt_reviewer', $user->getRoles());
+  $isAwardsReviewer = in_array('mt_awards_board_member', $user->getRoles());
+  if ($isReviewer) {
+    if(in_array($form_id ,$award_forms)){
+      _mt_review_access_control_make_form_inaccessible($form);
+    }
+    if(in_array($form_id ,$review_forms)){
+      $abstract_reviewers = $node->get('field_mt_abstract_reviewers')->getValue();
+      $reviewer_id = $user->id();
+      if (!_mt_review_access_control_reviewer_exists($reviewer_id, $abstract_reviewers)) {
+        _mt_review_access_control_make_form_inaccessible($form);
+      }
+    }
+  }
+  if ($isAwardsReviewer) {
+    if(in_array($form_id ,$review_forms)){
+      _mt_review_access_control_make_form_inaccessible($form);
+    }
+  }
+}
+
+function mt_review_access_control_preprocess_node(&$vars)
+{
+  $account = \Drupal::currentUser();
+  $haystack = ['mt_review_organiser', 'mt_observer','administrator'];
+  // If Admin or Observer or Review Organiser
+  if(array_intersect($haystack, $account->getRoles())){
+    // Do nothing.
+    return;
+  }
+
+  // Count the scores the abstract received.
+  $own_scores = 0;
+  // take out comments (scores and messages to author) the are not owned bye the reviewer visiting the page.
+  $comment_types = ['field_mt_abstract_score','field_mt_abstract_comment_author', 'field_mt_abstract_conflict',
+                    'field_mt_abstract_aw_review'];
+  foreach($comment_types as $comment_type) {
+    foreach ($vars["content"][$comment_type][0]["comments"] as $key => $value) {
+      if (is_int($key)) {
+        $own = $value["#comment"]->getOwner()->id() === $account->id();
+        if (!$own) {
+          unset($vars["content"][$comment_type][0]["comments"][$key]);
+        } else {
+          if($comment_type === 'field_mt_abstract_score') {
+            $own_scores++;
+          }
+        }
+      }
+    }
+  }
+  // Take the comment form out if a score is already given.
+  if ($own_scores > 0) {
+    unset($vars["content"]["field_mt_abstract_comment_author"][0]["comment_form"]);
+  }
+}
+
+function mt_review_access_control_preprocess_comment(&$vars)
+{
+  // Do not diplay subject when it is empty.
+  // Applies to Score comment types.
+  if ($vars["comment"]->getTypeId() === 'mt_score_comments') {
+    $vars['title'] = FALSE;
+  }
+  // Set the subject of Awards Score comment
+  if ($vars["comment"]->getTypeId() === 'mt_aw_score') {
+    $vars['title'] = t('Awards Rating');
+  }
+  $vars['submitted'] = $vars['created'] . ' — ' . $vars['author'];
+}
+
+function mt_review_access_control_comment_links_alter(array &$links, Drupal\comment\CommentInterface $entity, array &$context)
+{
+  $score_comments = ['mt_score_comments', 'mt_aw_score'];
+  $is_score_comment = in_array($entity->getTypeId(), $score_comments);
+  if ($is_score_comment) {
+    // Take the "reply" out from the score comment type.
+    unset($links['comment']['#links']['comment-reply']);
+    // Improve the "Edit" prompt.
+    $links['comment']['#links']['comment-edit']['title'] = t('Edit this review');
+  }
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function mt_review_access_control_node_access(NodeInterface $node, $operation, AccountInterface $account) {
+  $access = new \Drupal\Core\Access\AccessResultNeutral();
+
+  if ($node->getType() !== 'mt_abstract') {
+    return;
+  }
+
+  $haystack = ['mt_review_organiser', 'mt_observer','administrator'];
+  // If Admin or Observer or Review Organiser
+  if(array_intersect($haystack, $account->getRoles())){
+    // Do nothing.
+    return;
+  }
+
+  $isReviewer = in_array('mt_reviewer', $account->getRoles());
+  $isAwardsReviewer = in_array('mt_awards_board_member', $account->getRoles());
+  if ($isReviewer) {
+    $abstract_reviewers = $node->get('field_mt_abstract_reviewers')->getValue();
+  } elseif ($isAwardsReviewer) {
+    $abstract_reviewers = $node->get('field_mt_abstract_aw_reviewers')->getValue();
+  } else {
+    // In case the user is not a Reviewer or Awards Board member, do nothing.
+    return;
+  }
+  $reviewer_id = $account->id();
+  if (!_mt_review_access_control_reviewer_exists($reviewer_id, $abstract_reviewers)) {
+    $access = new \Drupal\Core\Access\AccessResultForbidden();
+  }
+
+  return $access;
+}
+
+function _mt_review_access_control_reviewer_exists($reviewer_id, $abstract_reviewers) {
+  $abstract_reviewer_id = function($reviewer) {
+    return $reviewer['target_id'];
+  };
+  $flat_abstract_reviewers = array_map($abstract_reviewer_id, $abstract_reviewers);
+  return in_array($reviewer_id ,$flat_abstract_reviewers);
+}
+
+function _mt_review_access_control_make_form_inaccessible(&$form) {
+  $form['#access'] = FALSE;
+  $form['#attributes']['class'][] = 'mt-form-no-access';
+  $form['#attached']['library'][] = 'mt_review_access_control/mt-form-no-access';
+}

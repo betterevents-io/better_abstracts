@@ -1,0 +1,18 @@
+name: 'User Profile'
+type: module
+description: 'Adds more fields to the user profile.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - feeds
+  - feeds_tamper
+  - user
+config_devel:
+  - field.field.user.user.field_mt_first_name
+  - field.field.user.user.field_mt_last_name
+  - field.storage.user.field_mt_first_name
+  - field.storage.user.field_mt_last_name
+  - core.entity_view_display.user.user.compact
+  - core.entity_form_display.user.user.default
+  - core.entity_view_display.user.user.default

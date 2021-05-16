@@ -1,0 +1,198 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.mt_abstract.body
+    - field.field.node.mt_abstract.feeds_item
+    - field.field.node.mt_abstract.field_mt_abstract_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_approach
+    - field.field.node.mt_abstract.field_mt_abstract_aw_design
+    - field.field.node.mt_abstract.field_mt_abstract_aw_findings
+    - field.field.node.mt_abstract.field_mt_abstract_aw_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_aw_originality
+    - field.field.node.mt_abstract.field_mt_abstract_aw_review
+    - field.field.node.mt_abstract.field_mt_abstract_aw_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_aw_total_avg
+    - field.field.node.mt_abstract.field_mt_abstract_comment_author
+    - field.field.node.mt_abstract.field_mt_abstract_conflict
+    - field.field.node.mt_abstract.field_mt_abstract_design
+    - field.field.node.mt_abstract.field_mt_abstract_findings
+    - field.field.node.mt_abstract.field_mt_abstract_id
+    - field.field.node.mt_abstract.field_mt_abstract_methodology
+    - field.field.node.mt_abstract.field_mt_abstract_originality
+    - field.field.node.mt_abstract.field_mt_abstract_pres_type
+    - field.field.node.mt_abstract.field_mt_abstract_reviewers
+    - field.field.node.mt_abstract.field_mt_abstract_score
+    - field.field.node.mt_abstract.field_mt_abstract_topic
+    - field.field.node.mt_abstract.field_mt_abstract_total_average
+    - node.type.mt_abstract
+  module:
+    - comment
+    - path
+    - text
+id: node.mt_abstract.default
+targetEntityType: node
+bundle: mt_abstract
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_mt_abstract_aw_review:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_aw_reviewers:
+    weight: 10
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mt_abstract_aw_total_avg:
+    weight: 13
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_mt_abstract_conflict:
+    weight: 15
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_id:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_mt_abstract_pres_type:
+    weight: 17
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mt_abstract_reviewers:
+    weight: 9
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mt_abstract_score:
+    weight: 11
+    settings: {  }
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_mt_abstract_topic:
+    weight: 14
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_mt_abstract_total_average:
+    weight: 12
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden:
+  feeds_item: true
+  field_mt_abstract_approach: true
+  field_mt_abstract_aw_approach: true
+  field_mt_abstract_aw_design: true
+  field_mt_abstract_aw_findings: true
+  field_mt_abstract_aw_methodology: true
+  field_mt_abstract_aw_originality: true
+  field_mt_abstract_comment_author: true
+  field_mt_abstract_design: true
+  field_mt_abstract_findings: true
+  field_mt_abstract_methodology: true
+  field_mt_abstract_originality: true

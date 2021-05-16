@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.mt_conflict_statement
+    - field.storage.comment.field_mt_prompt
+  module:
+    - markup
+id: comment.mt_conflict_statement.field_mt_prompt
+field_name: field_mt_prompt
+entity_type: comment
+bundle: mt_conflict_statement
+label: Prompt
+description: ''
+required: false
+translatable: true
+default_value:
+  - {  }
+default_value_callback: ''
+settings:
+  markup:
+    value: "<p>Please fill this form In case you cannot review this abstract because there is a conflict of interest, i.e. supervising or co-authoring with at least one of the authors in the past 3 years, having a direct or indirect financial interest etc.</p>\r\n\r\n<p>After filling in this form you will be automatically <strong>unassigned from the review of this specific abstract</strong>.</p>\r\n\r\n<p>Explain the reasons thoroughly.</p>\r\n"
+    format: basic_html
+field_type: markup

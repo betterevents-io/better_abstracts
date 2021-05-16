@@ -1,0 +1,7 @@
+langcode: el
+status: true
+dependencies: {  }
+id: mt_aw_design
+label: 'Design (Awards)'
+value_type: points
+description: 'The design of the research. What type of research was selected? What methods and techniques have been chosen by the researcher?'

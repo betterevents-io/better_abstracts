@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function mt_review_dashboard_theme($existing, $type, $theme, $path) {
+  return [
+    'mailgun__mt_review_dashboard' => [
+      'variables' => [
+        'message' => [],
+      ],
+      'mail theme' => TRUE,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_mail().
+ */
+//function mt_event_email_invitations_mail($key, &$message, $params) {
+//  $message['subject'] = $params['subject'];
+//  $message['banner'] = $params['banner'];
+//  $recipient = $params['recipient'];
+//
+//  $data = array(
+//    'recipient' => $recipient,
+//  );
+//  $message['body_text'] = \Drupal::token()->replace($params['body'], $data);
+//
+//  switch ($key) {
+//    case 'invitation':
+//      $body_data = array (
+//        '#theme' => 'mailgun__mt_event_email_invitations',
+//        '#message' => $message
+//      );
+//      $message['body'][] = \Drupal::service('renderer')->render($body_data);
+//      break;
+//  }
+//}
+//
+//function mt_event_email_invitations_tokens($type, $tokens, array $data, array $options, \Drupal\Core\Render\BubbleableMetadata $bubbleable_metadata) {
+//  $replacements = [];
+//  if ($type == 'recipient' && !empty($data['recipient'])) {
+//    $recipient = $data['recipient'];
+//    $recipient_nid = $recipient->get('nid')->value;
+//    $host = \Drupal::request()->getSchemeAndHttpHost();
+//    $base_url = \Drupal::request()->getBaseUrl();
+//    $prefix = 'field_mt_inv_rec_';
+//    foreach ($tokens as $name => $original) {
+//      $key = $prefix . $name;
+//      switch ($name) {
+//        case 'information':
+//          $info_value = $recipient->get('field_mt_inv_rec_information')->value;
+//          // Inserts HTML line breaks before each newline character
+//          $info_value = nl2br($info_value);
+//          $replacements[$original] = \Drupal\Core\Render\Markup::create($info_value);
+//          break;
+//        case 'accept_invitation':
+//          $replacements[$original] = $host . $base_url . '/accept-invitation/' . $recipient_nid;
+//          break;
+//        case 'decline_invitation':
+//          $replacements[$original] = $host . $base_url . '/decline-invitation/' . $recipient_nid;
+//          break;
+//        default:
+//          $replacements[$original] = $recipient->get($key)->value;
+//      }
+//    }
+//  }
+//  return $replacements;
+//}
+//
+//function mt_event_email_invitations_preprocess_mailgun__mt_event_email_invitations(array &$variables)
+//{
+//  $variables['banner'] = $variables['message']['params']['banner'];
+//  $variables['body_text'] = $variables['message']['body_text'];
+//}
+
+/**
+ * Implements hook_cron().
+ *
+ * Send email invitations to recipients that have 'field_mt_inv_rec_send_email' set to 1.
+ */
+function mt_event_email_invitations_cron() {
+//  $query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
+//  $query
+//    ->condition('type', 'mt_invitation_recipient')
+//    ->condition('field_mt_inv_rec_send_email', 1)
+//    ->condition('status', 1);
+//  $nids = $query->execute();
+//  $invitations = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+//
+//  foreach ($invitations as $key => $invitation) {
+//    $mailManager = \Drupal::service('plugin.manager.mail');
+//    $module = 'mt_event_email_invitations';
+//    $key = 'invitation';
+//    $to = $invitation->get('title')->value;
+//    $params['salutation'] = $invitation->get('field_mt_inv_rec_salutation')->value;
+//    $config = \Drupal::config('system.site');
+//    $params['subject'] = 'You are invited to ' . $config->get('name');
+//    $langcode = \Drupal::currentUser()->getPreferredLangcode();
+//    $send = true;
+//
+//    $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+//    if ($result['result'] != true) {
+//      $message = t('There was a problem sending the email invitation to @email.', array('@email' => $to));
+//      \Drupal::logger('mt_event_email_invitations')->error($message);
+//      return;
+//    }
+//
+//    $invitation->set('field_mt_inv_rec_send_email', 0);
+//    $invitation->field_mt_inv_rec_status->value = 'pending';
+//    $invitation->save();
+//    $message = t('An email invitation has been sent to @email ', array('@email' => $to));
+//    \Drupal::logger('mt_event_email_invitations')->notice($message);
+//  }
+}

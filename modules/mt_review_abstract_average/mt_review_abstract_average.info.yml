@@ -1,0 +1,9 @@
+name: 'Abstract Average Score'
+type: module
+description: 'Calculates the average score of each Abstract.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - votingapi
+#  - mt_review_mt_abstract

@@ -1,0 +1,9 @@
+name: 'Access Control'
+type: module
+description: 'Contols the access to fields entities.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Better Abstracts'
+php: 7.3
+dependencies:
+  # - devel

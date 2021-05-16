@@ -1,0 +1,17 @@
+<div id="mt-review-support-block">
+  <p>
+    {{'For support visit' | trans}} 
+    <a href="https://support.betterevents.io" target="_blank">support.betterevents.io</a> 
+    {{'or call' | trans}} 
+    <a href="tel:+302541077380">+302541077380</a>
+  </p>
+
+  <p>
+    <a href="https://betterevents.io" target="_blank">
+      <img src="https://betterevents.io/sites/default/files/better-events-logo.png" width="100px" />
+    </a>
+  </p>
+  {% if fb_page_id %}
+    <div attribution="setup_tool" class="fb-customerchat" page_id="{{fb_page_id}}">&nbsp;</div>
+  {% endif %}
+</div>

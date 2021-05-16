@@ -1,0 +1,17 @@
+@media (max-width: 1300px) and (min-width: 1200px) {
+  .fb_dialog_content iframe {
+      bottom: 60px!important;
+  }
+}
+@media (max-width: 1120px) and (min-width: 992px) {
+  .fb_dialog_content iframe {
+    bottom: 60px!important;
+  }
+}
+@media (max-width: 767px) {
+  .fb_dialog_content iframe {
+    bottom: 60px!important;
+    right: 0px!important;
+    margin-right: 10px!important;
+  }
+}

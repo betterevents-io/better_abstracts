@@ -1,0 +1,24 @@
+mt_review_dashboard.dashboard:
+  title: 'Abstracts Review'
+  description: 'Configure general information and send emails'
+  route_name: 'mt_review_dashboard.dashboard'
+  parent: system.admin_config
+  weight: 100
+
+mt_review_dashboard.settings_page:
+  title: 'Settings'
+  description: 'Configure the general information and settings.'
+  route_name: 'mt_review_dashboard.settings_configuration_form'
+  parent: mt_review_dashboard.dashboard
+
+mt_review_dashboard.send_emails_page:
+  title: 'Emails and Notifications'
+  description: 'Send emails and notifications to the reviewers.'
+  route_name: 'mt_review_dashboard.send_emails_form'
+  parent: mt_review_dashboard.dashboard
+
+mt_review_dashboard.send_reminders_page:
+  title: 'Reminders to Reviewers'
+  description: 'Send reminders to the reviewers.'
+  route_name: 'mt_review_dashboard.send_reminders'
+  parent: mt_review_dashboard.dashboard

@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: mt_methodology
+label: Methodology
+value_type: points
+description: 'Is the research reliable and valid? What and how was done? For example, how is the data collected, how is it analysed, are there any tools or materials used?'

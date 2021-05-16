@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - message.template.mt_revision_request_notification
+id: message.mt_revision_request_notification.default
+targetEntityType: message
+bundle: mt_revision_request_notification
+mode: default
+content:
+  partial_0:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  partial_1:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

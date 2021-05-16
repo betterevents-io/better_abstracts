@@ -1,0 +1,23 @@
+uuid: 0d1cf354-d068-4b2e-8086-d7a009996608
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - othello
+_core:
+  default_config_hash: oxx42senoNVyvKqVWyrphaynw-aZ1ijr1OmHNM3UVW4
+id: othello_syndicate
+theme: othello
+region: social
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  provider: node
+  label_display: '0'
+  block_count: 10
+visibility: {  }

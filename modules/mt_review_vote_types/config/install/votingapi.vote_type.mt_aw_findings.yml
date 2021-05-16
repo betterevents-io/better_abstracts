@@ -1,0 +1,7 @@
+langcode: el
+status: true
+dependencies: {  }
+id: mt_aw_findings
+label: 'Findings (Awards)'
+value_type: points
+description: 'What was found in the course of the work/research?'

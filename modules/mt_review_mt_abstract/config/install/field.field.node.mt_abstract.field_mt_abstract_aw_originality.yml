@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mt_abstract_aw_originality
+    - node.type.mt_abstract
+  module:
+    - fivestar
+id: node.mt_abstract.field_mt_abstract_aw_originality
+field_name: field_mt_abstract_aw_originality
+entity_type: node
+bundle: mt_abstract
+label: 'Originality (Awards)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  stars: 10
+  allow_clear: false
+  allow_revote: true
+  allow_ownvote: true
+  rated_while: editing
+  enable_voting_target: false
+  target_bridge_field: ''
+  target_fivestar_field: ''
+field_type: fivestar
