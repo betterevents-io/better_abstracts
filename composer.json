@@ -9,6 +9,12 @@
             "role": ""
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
     "require": {
         "cweagans/composer-patches": "^1.7",
         "drupal/config_devel": "^1.8",
