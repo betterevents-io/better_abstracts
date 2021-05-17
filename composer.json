@@ -3,10 +3,10 @@
     "description": "Better Abstracts profile",
     "type": "drupal-profile",
     "license": "GPL-2.0-or-later",
-    "repositories": [
+    "authors": [
         {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "name": "",
+            "role": ""
         }
     ],
     "require": {
