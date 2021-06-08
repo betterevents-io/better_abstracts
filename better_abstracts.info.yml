@@ -97,6 +97,7 @@ dependencies:
   - mt_review_taxonomy
   - mt_review_vbo
   - mt_review_vote_types
+  - mt_review_default_content
 
 themes:
   - olivero
