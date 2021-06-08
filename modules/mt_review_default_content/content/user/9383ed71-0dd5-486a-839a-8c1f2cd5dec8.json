@@ -1,0 +1,125 @@
+{
+    "_links": {
+        "self": {
+            "href": "http:\/\/drupal.org\/web\/user\/8?_format=hal_json"
+        },
+        "type": {
+            "href": "http:\/\/drupal.org\/rest\/type\/user\/user"
+        },
+        "http:\/\/drupal.org\/rest\/relation\/user\/user\/field_mt_area_of_interest": [
+            {
+                "href": "http:\/\/drupal.org\/web\/taxonomy\/term\/2?_format=hal_json"
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/user\/user\/user_picture": [
+        ]
+    },
+    "uuid": [
+        {
+            "value": "9383ed71-0dd5-486a-839a-8c1f2cd5dec8"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en",
+            "lang": "en"
+        }
+    ],
+    "preferred_langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "name": [
+        {
+            "value": "golan"
+        }
+    ],
+    "mail": [
+        {
+            "value": "thefri@example.com"
+        }
+    ],
+    "timezone": [
+        {
+            "value": "Europe\/Brussels"
+        }
+    ],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "created": [
+        {
+            "value": "2021-01-20T21:35:19+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2021-03-04T06:52:41+00:00",
+            "lang": "en",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "access": [
+        {
+            "value": "1970-01-01T00:00:00+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "login": [
+        {
+            "value": "1970-01-01T00:00:00+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "roles": [
+        {
+            "target_id": "mt_reviewer"
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true,
+            "lang": "en"
+        }
+    ],
+    "_embedded": {
+        "http:\/\/drupal.org\/rest\/relation\/user\/user\/field_mt_area_of_interest": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "http:\/\/drupal.org\/web\/taxonomy\/term\/2?_format=hal_json"
+                    },
+                    "type": {
+                        "href": "http:\/\/drupal.org\/rest\/type\/taxonomy_term\/mt_topics"
+                    }
+                },
+                "uuid": [
+                    {
+                        "value": "268ae6bc-66c8-40c2-be53-da57ee64890d"
+                    }
+                ]
+            }
+        ],
+        "http:\/\/drupal.org\/rest\/relation\/user\/user\/user_picture": [
+        ]
+    },
+    "field_mt_first_name": [
+        {
+            "value": "Golan"
+        }
+    ],
+    "field_mt_last_name": [
+        {
+            "value": "Trevize"
+        }
+    ],
+    "pass": [
+        {
+            "value": "$S$EDgEaNL.yCqJhHFCShR5tK9Q1S\/e1f0tzDzGVvZlIiquZLOjf\/0I"
+        }
+    ]
+}
