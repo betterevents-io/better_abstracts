@@ -23,11 +23,11 @@ Open the `composer.json` file and make sure the following properties are set as 
 "prefer-stable": true,
 ```
 
-Require the `betterevents/better_abstracts:^v1.0.6-alpha` package for downloading all the modules, themes and configuration that come with the installation profile:
+Require the `betterevents/better_abstracts:^v1.0.7-alpha` package for downloading all the modules, themes and configuration that come with the installation profile:
 
 ```
 cd my_site_name_dir
-composer require "betterevents/better_abstracts:^v1.0.6-alpha"
+composer require "betterevents/better_abstracts:^v1.0.7-alpha"
 ```
 
 Done! Visit `/web/core/install.php` and run the installation of your Abstracts Review site.
