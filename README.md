@@ -7,7 +7,7 @@ Provides an import process for Abstracts and Reviewers, an automated abstract as
 ## Usage
 We suggest that you install this profile as part of the [Better Abstracts distribution](https://github.com/betterevents/better-abstracts-project) using Composer.
 
-However, if you want to install it as part of any Drupal project, please follow the instructions below.
+However, if you want to install it on any Drupal project, please follow the instructions below.
 
 First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos).
 
