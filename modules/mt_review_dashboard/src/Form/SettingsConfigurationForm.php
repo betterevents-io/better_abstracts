@@ -61,7 +61,7 @@ class SettingsConfigurationForm extends ConfigFormBase
       '#title' => $this->t('Facebook Chat'),
       '#required' => TRUE,
       '#description' => $this->t('The ID for the Facebook Page the chat is configured for.'),
-      '#default_value' => '105215460827624',
+      '#default_value' => '123456789012345',
     );
 
     return parent::buildForm($form, $form_state);
