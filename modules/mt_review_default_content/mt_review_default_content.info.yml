@@ -1,0 +1,33 @@
+name: 'Default Content'
+type: module
+description: 'Creates default content for Abstracts Review.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Abstracts Review'
+dependencies:
+  - default_content
+default_content:
+  node:
+    - 4a50cc27-704f-443f-bf72-130a2d72ea28
+    - 1dd1bd95-99c8-4e7c-9b3d-fb2ce40343a2
+    - 10d5a7e6-3499-452c-89ab-ee61e7e2e529
+    - a3e2e18f-8a54-4342-ae3a-1a752cb1cee7
+    - a4cf4589-7de7-4793-9a00-1137236b00ef
+    - a9c49799-177a-47d0-95b9-6e200992f5d5
+    - c0291c6d-8923-4a1a-9fa5-8a526839b9ef
+    - cddd25b8-2093-4ff3-a063-884e724405c2
+    - d50d69d0-8311-4c03-94cc-395b2207f1b9
+    - f6fd8375-b522-4ac7-abdc-71250379a9d9
+    - f11a5ef1-57bb-4d41-8af4-1aade206b15b
+    - f9506fc5-dace-486a-96c2-0850c462aba5
+  taxonomy_term:
+    - 268ae6bc-66c8-40c2-be53-da57ee64890d
+    - facdb993-dfc1-4814-ba7c-f66bd818eee7
+  user:
+    - 88ea1e2d-2923-471e-8c12-12e56bcc2a93
+    - 6408dcb1-3e0c-4e65-b140-a5237cde2d35
+    - 9383ed71-0dd5-486a-839a-8c1f2cd5dec8
+    - 1870300e-ab4d-4ec2-8e5d-c5f1318ac759
+    - 79779194-752f-46ae-8ca8-5f89de9c8dcd
+    - b60634f3-ff58-4f99-b99f-cad39ce386e2
+    - b0928837-175a-4ef0-b95a-4fc778e23141
