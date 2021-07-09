@@ -1,3 +1,3 @@
-email,username,status,roles,first_name,last_name,areas_of_interest
-test1@test.com,test1,0,"mt_reviewer,mt_review_organiser,administrator",John,Smith,"Seborrheic Dermatitis"
-test2@test.com,test2,0,"mt_reviewer",Virginia,Petty,"Seborrheic Dermatitis,Dermatopathology"
+email,username,status,roles,first_name,last_name,areas_of_interest,language
+test1@test.com,test1,0,"mt_reviewer,mt_review_organiser,administrator",John,Smith,"Seborrheic Dermatitis",en
+test2@test.com,test2,0,"mt_reviewer",Virginia,Petty,"Seborrheic Dermatitis,Dermatopathology",en
