@@ -4,7 +4,7 @@ An installation profile for an [Abstracts Review](https://betterevents.io/abstra
 
 Provides an import process for Abstracts and Reviewers, an automated abstract assignment to reviewers, multiple evaluation criteria mechanism, review result extraction, notifications and more...
 
-## Usage
+## Installation
 > We suggest that you install this profile as part of the [Better Abstracts distribution](https://github.com/betterevents/better-abstracts-project) using Composer.
 
 However, if you want to install it on any Drupal project, please follow the instructions below.
@@ -38,3 +38,11 @@ Done! Visit `/web/core/install.php` and run the installation of your Abstracts R
 * Profile is placed in `web/profiles/contrib/`
 * Modules that come with the installation profile are placed in `web/profiles/contrib/better_abstracts/modules/`
 * Theme is placed in `web/profiles/contrib/better_abstracts/themes/`
+
+## How to use
+You are all set to put it into action! Next steps:
+
+1. Populate Better Abstracts with sample content
+2. Learn how to configure and use it.
+
+Get started with our [quick start guide](https://docs.google.com/document/d/1OolrXm3ynUR_kwSOrBM8Yevh1eYSVD0uJ-wAONpOn8c/edit?usp=sharing) or read our [full documentation](https://docs.google.com/document/d/13CNN5PFDv54cfhCdnZT_F6epfnNxXIVkyMyhF_qeTAQ/edit?usp=sharing).
