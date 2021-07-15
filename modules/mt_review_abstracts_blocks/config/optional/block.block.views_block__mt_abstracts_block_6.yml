@@ -4,33 +4,24 @@ dependencies:
   config:
     - views.view.mt_abstracts
   module:
-    - node
     - user
     - views
   theme:
     - othello
-id: views_block__mt_abstracts_block_4
+id: views_block__mt_abstracts_block_6
 theme: othello
 region: sidebar
-weight: -11
+weight: -6
 provider: null
-plugin: 'views_block:mt_abstracts-block_4'
+plugin: 'views_block:mt_abstracts-block_6'
 settings:
-  id: 'views_block:mt_abstracts-block_4'
+  id: 'views_block:mt_abstracts-block_6'
   label: ''
   provider: views
-  label_display: '0'
+  label_display: visible
   views_label: ''
   items_per_page: none
-  context_mapping: {  }
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      mt_abstract: mt_abstract
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   user_role:
     id: user_role
     roles:

@@ -31,48 +31,13 @@
  */
 #}
 <html>
-<head>
-  <style type="text/css">
-    .mt-wrapper {
-      background: #2222;
-      padding: 15px 10%;
-    }
-    .mt-account {
-      border: 1px solid rgba(0,0,0,0.05);
-      background: rgba(0,0,0,0.03);
-      padding: 10px;
-    }
 
-    .mt-warning {
-      border: 1px solid rgba(255,0,0,0.05);
-      background: rgba(255,0,0,0.03);
-      padding: 10px;
-      font-size: 16px;
-    }
+{% include '@mt_review_notifications/templates/partials/_mt-status-activated-head.html.twig' %}
 
-    .mt-content {
-      background: #ffff;
-      padding: 15px;
-    }
-
-    .mt-banner {
-      text-align: center;
-    }
-
-    .mt-banner img {
-      display: inline;
-      max-width: 100%;
-    }
-
-  </style>
-</head>
 <body>
 <div class="mt-wrapper">
   <div class="mt-content">
-    <div class="mt-banner">
-{#      <img src="https://s3.amazonaws.com/appseed.io/betterevents.io/eso2020/banner.jpg">#}
-     <img src="https://betterabstracts.com/esko2021/web/sites/default/files/logo-esko2021-v2_0.jpg">
-    </div>
+    {% include '@mt_review_notifications/templates/partials/_mt-status-activated-banner.html.twig' %}
 
     <p>Θα θέλαμε να σας ενημερώσουμε ότι οι αξιολογήσεις των Abstract για το <strong>27ο Ελληνικό Συνέδριο Κλινικής Ογκολογίας</strong> έχουν ξεκινήσει.</p>
 
@@ -94,19 +59,17 @@
 
     <h1>2. Ενεργοποίηση λογαριασμού</h1>
 
-    <p>Πριν χρησιμοποιήσετε την υπηρεσία αξιολόγησης των abstract θα πρέπει να ενεργοποιήσετε τον λογαριασμό σας σύμφωνα με τις οδηγίες που ακολουθούν:<p>
+    <p>Πριν χρησιμοποιήσετε την υπηρεσία αξιολόγησης των abstract θα πρέπει να ενεργοποιήσετε τον λογαριασμό σας σύμφωνα με τις οδηγίες που ακολουθούν:</p>
 
     <div class="mt-account">
       {{ body }}
     </div>
 
-    <p>Αν αντιμετωπίζετε πρόβλημα σύνδεσης στο λογαριασμό σας, μπορείτε να
-      <a href="{{ base_url }}/user/password">επαναφέρετε τον κωδικό πρόσβασης</a> ή να επικοινωνήσετε
-      μαζί μας στη διεύθυνση <a href="https://support.betterevents.io/">support.betterevents.io</a>.</p>
+    {% include '@mt_review_notifications/templates/partials/_mt-status-activated-support.html.twig' %}
 
   </div>
 
-  <h4>This email is send by <a href="https://betterevents.io">betterevents</a></h4>
+  {% include '@mt_review_notifications/templates/partials/_mt-status-activated-footer.html.twig' %}
 </div>
 
 </body>

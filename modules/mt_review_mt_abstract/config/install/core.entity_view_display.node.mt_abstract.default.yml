@@ -29,9 +29,46 @@ dependencies:
     - node.type.mt_abstract
   module:
     - comment
+    - field_group
     - fivestar
     - text
     - user
+third_party_settings:
+  field_group:
+    group_mt_review:
+      children:
+        - field_mt_abstract_originality
+        - field_mt_abstract_design
+        - field_mt_abstract_methodology
+        - field_mt_abstract_approach
+        - field_mt_abstract_findings
+        - field_mt_abstract_total_average
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        description: ''
+        id: ''
+        classes: mt-grid-3
+      label: Review
+    group_mt_award:
+      children:
+        - field_mt_abstract_aw_originality
+        - field_mt_abstract_aw_design
+        - field_mt_abstract_aw_methodology
+        - field_mt_abstract_aw_approach
+        - field_mt_abstract_aw_findings
+        - field_mt_abstract_aw_total_avg
+      parent_name: ''
+      weight: 5
+      format_type: fieldset
+      region: content
+      format_settings:
+        description: ''
+        id: ''
+        classes: mt-grid-3
+      label: Award
 id: node.mt_abstract.default
 targetEntityType: node
 bundle: mt_abstract
@@ -45,7 +82,7 @@ content:
     third_party_settings: {  }
     region: content
   field_mt_abstract_approach:
-    weight: 7
+    weight: 8
     label: above
     settings:
       text_format: average
@@ -55,7 +92,7 @@ content:
     type: fivestar_stars
     region: content
   field_mt_abstract_aw_approach:
-    weight: 13
+    weight: 9
     label: above
     settings:
       text_format: average
@@ -65,7 +102,7 @@ content:
     type: fivestar_stars
     region: content
   field_mt_abstract_aw_design:
-    weight: 11
+    weight: 7
     label: above
     settings:
       text_format: average
@@ -75,26 +112,6 @@ content:
     type: fivestar_stars
     region: content
   field_mt_abstract_aw_findings:
-    weight: 14
-    label: above
-    settings:
-      text_format: average
-      display_format: average
-      fivestar_widget: basic
-    third_party_settings: {  }
-    type: fivestar_stars
-    region: content
-  field_mt_abstract_aw_methodology:
-    weight: 12
-    label: above
-    settings:
-      text_format: average
-      display_format: average
-      fivestar_widget: basic
-    third_party_settings: {  }
-    type: fivestar_stars
-    region: content
-  field_mt_abstract_aw_originality:
     weight: 10
     label: above
     settings:
@@ -104,8 +121,28 @@ content:
     third_party_settings: {  }
     type: fivestar_stars
     region: content
+  field_mt_abstract_aw_methodology:
+    weight: 8
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
+  field_mt_abstract_aw_originality:
+    weight: 6
+    label: above
+    settings:
+      text_format: average
+      display_format: average
+      fivestar_widget: basic
+    third_party_settings: {  }
+    type: fivestar_stars
+    region: content
   field_mt_abstract_aw_review:
-    weight: 19
+    weight: 9
     label: hidden
     settings:
       view_mode: default
@@ -114,7 +151,7 @@ content:
     type: comment_default
     region: content
   field_mt_abstract_aw_total_avg:
-    weight: 15
+    weight: 11
     label: above
     settings:
       thousand_separator: ''
@@ -125,7 +162,7 @@ content:
     type: number_decimal
     region: content
   field_mt_abstract_conflict:
-    weight: 18
+    weight: 8
     label: hidden
     settings:
       view_mode: default
@@ -134,7 +171,7 @@ content:
     type: comment_default
     region: content
   field_mt_abstract_design:
-    weight: 5
+    weight: 6
     label: above
     settings:
       text_format: average
@@ -144,7 +181,7 @@ content:
     type: fivestar_stars
     region: content
   field_mt_abstract_findings:
-    weight: 8
+    weight: 9
     label: above
     settings:
       text_format: average
@@ -162,7 +199,7 @@ content:
     type: string
     region: content
   field_mt_abstract_methodology:
-    weight: 6
+    weight: 7
     label: above
     settings:
       text_format: average
@@ -172,7 +209,7 @@ content:
     type: fivestar_stars
     region: content
   field_mt_abstract_originality:
-    weight: 4
+    weight: 5
     label: above
     settings:
       text_format: average
@@ -190,7 +227,7 @@ content:
     type: entity_reference_label
     region: content
   field_mt_abstract_score:
-    weight: 16
+    weight: 6
     label: hidden
     settings:
       view_mode: default
@@ -207,7 +244,7 @@ content:
     type: entity_reference_label
     region: content
   field_mt_abstract_total_average:
-    weight: 9
+    weight: 10
     label: above
     settings:
       thousand_separator: ''
@@ -218,7 +255,7 @@ content:
     type: number_decimal
     region: content
   flag_mt_review_completed:
-    weight: 17
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

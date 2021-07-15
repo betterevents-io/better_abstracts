@@ -24,7 +24,7 @@ third_party_settings:
         limit: null
         plugin: explode
         source: mt_areas_of_interest
-        weight: 0
+        weight: -9
         label: 'Assign multiple areas of interest'
         uuid: 2a6407d2-b624-41e5-8f9e-9dfd48dd24dc
       fb01fb63-105d-4e0b-ad39-8ac21a74d753:
@@ -35,6 +35,38 @@ third_party_settings:
         weight: 0
         label: 'Set value or default value'
         uuid: fb01fb63-105d-4e0b-ad39-8ac21a74d753
+      fcc0135d-c384-4317-9544-1e052c9b6b3f:
+        default_value: '0'
+        only_if_empty: true
+        plugin: default_value
+        source: mt_status
+        weight: 0
+        label: 'Set value or default value'
+        uuid: fcc0135d-c384-4317-9544-1e052c9b6b3f
+      87b47824-3df3-4408-a5ec-20b2a5c518b9:
+        default_value: ''
+        only_if_empty: true
+        plugin: default_value
+        source: mt_first_name
+        weight: 0
+        label: 'Set value or default value'
+        uuid: 87b47824-3df3-4408-a5ec-20b2a5c518b9
+      302f0220-198b-41fb-91d6-e37fd9147e30:
+        default_value: ''
+        only_if_empty: true
+        plugin: default_value
+        source: mt_last_name
+        weight: 0
+        label: 'Set value or default value'
+        uuid: 302f0220-198b-41fb-91d6-e37fd9147e30
+      e10cb2e0-ed27-467f-815f-e39cb7a1accf:
+        default_value: ''
+        only_if_empty: true
+        plugin: default_value
+        source: mt_areas_of_interest
+        weight: -10
+        label: 'Set value or default value'
+        uuid: e10cb2e0-ed27-467f-815f-e39cb7a1accf
 id: mt_reviewers
 label: Reviewers
 description: 'Imports users with Reviewer role'

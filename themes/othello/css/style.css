@@ -201,10 +201,17 @@ details.vbo-multipage-selector {
   display: none;
 }
 
-
 /* Reduce page title font size */
 
 h1.page-title {
   font-size: 2.5rem;
   line-height: 3rem;
 }
+
+.mt-grid-3 .fieldset__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.field-mt-abstract-total-average { grid-column: 1/1; }
+.field-mt-abstract-aw-total-avg  { grid-column: 1/1; }

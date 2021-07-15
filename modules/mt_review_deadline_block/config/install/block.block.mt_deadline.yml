@@ -8,7 +8,7 @@ dependencies:
 id: mt_deadline
 theme: othello
 region: sidebar
-weight: -9
+weight: -12
 provider: null
 plugin: mt_deadline
 settings:
