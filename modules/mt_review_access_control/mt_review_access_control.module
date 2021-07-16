@@ -203,7 +203,7 @@ function mt_review_access_control_preprocess_comment(&$vars)
   // Do not diplay subject when it is empty.
   // Applies to Score comment types.
   if ($vars["comment"]->getTypeId() === 'mt_score_comments') {
-    $vars['title'] = FALSE;
+    $vars['title'] = t('Review Rating');
   }
   // Set the subject of Awards Score comment
   if ($vars["comment"]->getTypeId() === 'mt_aw_score') {
