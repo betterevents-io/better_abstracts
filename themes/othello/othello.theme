@@ -11,9 +11,9 @@ function othello_preprocess_html(&$variables) {
   // The getRoles() method will return us the machine names, so there is no
   // need to process roles names additionally. However, I suggest prefixing
   // the names with "role-", so it's more obvious.
-  // foreach ($variables['user']->getRoles() as $role) {
-  //   $variables['attributes']['class'][] = 'role-' . $role;
-  // }
+  foreach ($variables['user']->getRoles() as $role) {
+    $variables['attributes']['class'][] = 'role-' . $role;
+  }
 }
 
 // TODO: Move this in the mt_review_comment_types module
